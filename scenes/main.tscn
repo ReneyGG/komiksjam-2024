@@ -1,0 +1,48 @@
+[gd_scene load_steps=8 format=3 uid="uid://dm8r0dqavyng7"]
+
+[ext_resource type="PackedScene" uid="uid://8k7g88vnyxle" path="res://scenes/player/player.tscn" id="1_kwvwq"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_hwgcl"]
+vertices = PackedVector3Array(-6.5, 0.5, -7.0852, -6.5, 0.5, 7.1648, 6.5, 0.5, 7.1648, 6.5, 0.5, -7.0852)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_2ifvv"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pqyeq"]
+size = Vector3(2.01361, 0.001, 2.01001)
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_vpah6"]
+
+[sub_resource type="Sky" id="Sky_8fjwj"]
+sky_material = SubResource("ProceduralSkyMaterial_vpah6")
+
+[sub_resource type="Environment" id="Environment_t0v6s"]
+background_mode = 2
+sky = SubResource("Sky_8fjwj")
+
+[node name="Main" type="Node3D"]
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_hwgcl")
+
+[node name="Floor" type="MeshInstance3D" parent="NavigationRegion3D"]
+transform = Transform3D(7, 0, 0, 0, 1.866, 0, 0, 0, 7.5852, 0, 0, 0)
+mesh = SubResource("PlaneMesh_2ifvv")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/Floor"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Floor/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00186157, 0, -0.00427246)
+shape = SubResource("BoxShape3D_pqyeq")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.685043, 0.728503, 0, -0.728503, 0.685043, -0.0463355, 7.05861, 7.36891)
+current = true
+
+[node name="Player" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("1_kwvwq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.46859, 0)
+camera = NodePath("../Camera3D")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_t0v6s")
