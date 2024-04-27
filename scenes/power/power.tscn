@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://cn47kwutjxg1w"]
+
+[ext_resource type="Script" path="res://scenes/power/power.gd" id="1_texqd"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bafvr"]
+albedo_color = Color(0.87451, 0.25098, 1, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_y046v"]
+material = SubResource("StandardMaterial3D_bafvr")
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_aqubo"]
+radius = 0.878362
+
+[node name="Power" type="Node3D"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+script = ExtResource("1_texqd")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_y046v")
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_aqubo")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

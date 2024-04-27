@@ -4,16 +4,22 @@ extends CharacterBody3D
 
 @export var camera : Node
 
-var speed = 60
+var speed = 8
 var friction = 0.15
 var acceleration = 0.1
 var projectile = preload("res://scenes/boom/boom.tscn")
+var stop_move = false
+var hp = 100.0
+var dead := false
 
 func _ready():
-	pass # Replace with function body.
+	$maincharacter3/AnimationPlayer.play("ArmatureAction")
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if dead:
+		return
+	if stop_move:
+		return
 	if(navigationAgent.is_navigation_finished()):
 		return
 	
@@ -29,8 +35,21 @@ func moveToPoint(delta, speed):
 func faceDirection(direction):
 	look_at(Vector3(direction.x, global_position.y, direction.z), Vector3.UP)
 
+func hit():
+	if dead:
+		return
+	hp -= 0.1
+	if hp <= 0:
+		dead = true
+		game_over()
+
+func game_over():
+	get_parent().game_over()
+
 func _input(event):
-	if Input.is_action_just_pressed("left_mouse"):
+	if dead:
+		return
+	if Input.is_action_pressed("left_mouse"):
 		var mousePos = get_viewport().get_mouse_position()
 		var rayLength = 1000
 		var from = camera.project_ray_origin(mousePos)
@@ -60,7 +79,11 @@ func _input(event):
 			var result = space.intersect_ray(rayQuery)
 			
 			if result.get("position"):
+				stop_move = true
 				$Cooldown.start()
 				var init = projectile.instantiate()
 				get_parent().get_node("Projectiles").add_child(init)
 				init.global_position = result.position
+
+func _on_cooldown_timeout():
+	stop_move = false

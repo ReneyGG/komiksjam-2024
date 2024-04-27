@@ -1,5 +1,7 @@
 extends Node3D
-#signal spawned
+signal spawned
+
+@onready var nod = get_parent().get_node("Enemies")
 
 @export var horizontal := false
 
@@ -18,15 +20,18 @@ func _ready():
 
 func _on_timer_timeout():
 	spawn()
-	$Timer.start(randf_range(3.0,5.0))
+	$Timer.start(randf_range(1.0,2.0))
 
 func spawn():
+	if get_parent().end:
+		return
+	emit_signal("spawned")
 	var p: float
 	var init = mob.instantiate()
-	add_child(init)
+	nod.add_child(init)
 	if horizontal:
-		p = randf_range(-130, 130)
+		p = randf_range(-10, 10)
 		init.global_position = Vector3(p, self.global_position.y , self.global_position.z)
 	else:
-		p = randf_range(-210, 13)
+		p = randf_range(-10, 10)
 		init.global_position = Vector3(self.global_position.x, self.global_position.y, p)

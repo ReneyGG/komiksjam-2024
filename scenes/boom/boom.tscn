@@ -1,11 +1,77 @@
-[gd_scene load_steps=6 format=3 uid="uid://d2lqw8d0tnle4"]
+[gd_scene load_steps=21 format=3 uid="uid://d2lqw8d0tnle4"]
 
 [ext_resource type="Script" path="res://scenes/boom/boom.gd" id="1_xiaqb"]
+[ext_resource type="Texture2D" uid="uid://bjf66rdawbmhl" path="res://assets/boom/wybuch_test1-1.png" id="2_pohwu"]
+[ext_resource type="Texture2D" uid="uid://dn0klt7w6g25s" path="res://assets/boom/wybuch_test1-2.png" id="3_2kjy1"]
+[ext_resource type="Texture2D" uid="uid://dxwb7iqhlc826" path="res://assets/boom/wybuch_test1-3.png" id="4_2dhpi"]
+[ext_resource type="Texture2D" uid="uid://hrk141sibqph" path="res://assets/boom/wybuch_test1-4.png" id="5_j0ysi"]
+[ext_resource type="Texture2D" uid="uid://cs54xua68872y" path="res://assets/boom/wybuch_test1-5.png" id="6_u8j8h"]
+[ext_resource type="Texture2D" uid="uid://brg7ga3y87iqj" path="res://assets/boom/wybuch_test1-6.png" id="7_mstcj"]
+[ext_resource type="Texture2D" uid="uid://nljtcqu0ninc" path="res://assets/boom/wybuch_test1-7.png" id="8_1yjcc"]
+[ext_resource type="Texture2D" uid="uid://de75hp3wmh2ne" path="res://assets/boom/wybuch_test1-8.png" id="9_i0jt7"]
+[ext_resource type="Texture2D" uid="uid://dh60l2beuiyfs" path="res://assets/boom/wybuch_test1-9.png" id="10_unw7x"]
+[ext_resource type="Texture2D" uid="uid://bkj0hr5nvabro" path="res://assets/boom/wybuch_test1-10.png" id="11_afakl"]
+[ext_resource type="Texture2D" uid="uid://ubolgrh7sw30" path="res://assets/boom/wybuch_test1-11.png" id="12_j2khg"]
+[ext_resource type="Texture2D" uid="uid://bhjqjp0mjdedc" path="res://assets/boom/wybuch_test1-12.png" id="13_m642l"]
+[ext_resource type="Texture2D" uid="uid://df1ygh8x5act6" path="res://assets/boom/wybuch_test1-13.png" id="14_xgvi7"]
+[ext_resource type="Texture2D" uid="uid://b4xnmr8vspb1x" path="res://assets/boom/wybuch_test1-14.png" id="15_v74wn"]
+[ext_resource type="Texture2D" uid="uid://cwhhy53ku5ghc" path="res://assets/boom/wybuch_test1-15.png" id="16_peey6"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_p1slh"]
 radius = 0.717942
 
-[sub_resource type="SphereMesh" id="SphereMesh_enn3v"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_t6rpf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_pohwu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_2kjy1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_2dhpi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_j0ysi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_u8j8h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_mstcj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_1yjcc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_i0jt7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_unw7x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_afakl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_j2khg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_m642l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_xgvi7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_v74wn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_peey6")
+}],
+"loop": false,
+"name": &"default",
+"speed": 15.0
+}]
 
 [sub_resource type="Animation" id="Animation_hd16l"]
 resource_name = "start"
@@ -24,18 +90,6 @@ tracks/0/keys = {
 "method": &"explode"
 }]
 }
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("MeshInstance3D:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(1, 1, 1), Vector3(2, 2, 2)]
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_2s8jx"]
 _data = {
@@ -43,7 +97,6 @@ _data = {
 }
 
 [node name="Boom" type="Node3D"]
-transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 0, 0, 0)
 script = ExtResource("1_xiaqb")
 
 [node name="Area3D" type="Area3D" parent="."]
@@ -53,8 +106,13 @@ collision_mask = 4
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 shape = SubResource("SphereShape3D_p1slh")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("SphereMesh_enn3v")
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0.399483, 0)
+billboard = 1
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_t6rpf")
+frame = 14
+frame_progress = 1.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

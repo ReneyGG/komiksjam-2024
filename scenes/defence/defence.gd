@@ -1,18 +1,26 @@
-extends Node3D
+extends StaticBody3D
+
+@export var dream : String
 
 var yes = false
+var attack = false
 var power = 0.0
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	$Label3D.text = "0%"
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	#global_position.x -= 0.1
 	if yes:
-		power += 0.1
-		$Label3D.text = str(int(power))+"%"
+		if power < 100.0:
+			power += 0.1
+		else:
+			get_parent().get_parent().win(dream)
+	
+	$Label3D.text = str(int(power))+"%"
+
+func hit():
+	if power > 0:
+		power -= 0.1
 
 func _on_area_3d_body_entered(body):
 	if body.is_in_group("player"):
