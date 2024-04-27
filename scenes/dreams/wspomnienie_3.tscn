@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://b1qn35hi46hsa"]
+
+[ext_resource type="PackedScene" uid="uid://b64t16eutihos" path="res://assets/dreams/wspomnienie3.glb" id="1_o8aep"]
+
+[node name="wspomnienie3" instance=ExtResource("1_o8aep")]

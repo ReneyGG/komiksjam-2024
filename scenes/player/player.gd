@@ -53,6 +53,7 @@ func hit():
 	if dead:
 		return
 	hp -= 0.1
+	$"../CamManager/Camera3D/CanvasLayer/Control/TextureRect".modulate.a += 0.001
 	if hp <= 0:
 		dead = true
 		game_over()
@@ -78,7 +79,7 @@ func _input(event):
 		if result.get("position"):
 			navigationAgent.target_position = result.position
 	
-	if Input.is_action_just_pressed("right_mouse"):
+	if Input.is_action_just_pressed("right_mouse") and not Input.is_action_pressed("space"):
 		if not $Cooldown.get_time_left() > 0:
 			var mousePos = get_viewport().get_mouse_position()
 			var rayLength = 1000

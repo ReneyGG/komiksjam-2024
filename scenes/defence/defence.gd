@@ -9,7 +9,8 @@ var attack = false
 func _ready():
 	$Label3D.text = "0%"
 
-func _process(delta):
+func _physics_process(delta):
+	rotation_degrees.y += 1 * delta
 	if power >= 100.0:
 		get_parent().get_parent().win(dream)
 	
@@ -21,4 +22,4 @@ func heal():
 
 func hit():
 	if power > 0:
-		power -= 0.1
+		power -= 0.5

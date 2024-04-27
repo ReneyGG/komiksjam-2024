@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://t34aheu0tmks"]
+
+[ext_resource type="PackedScene" uid="uid://d0ijpkkd2v0b" path="res://scenes/defence/defence.tscn" id="1_fh8fd"]
+[ext_resource type="PackedScene" uid="uid://defiwhst35ali" path="res://scenes/dreams/wspomnienie_1.tscn" id="2_byni6"]
+
+[node name="Dream1" instance=ExtResource("1_fh8fd")]
+
+[node name="mesh" parent="." index="2" instance=ExtResource("2_byni6")]
+
+[editable path="mesh"]

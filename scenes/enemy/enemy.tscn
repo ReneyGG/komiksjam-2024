@@ -12,7 +12,7 @@ radius = 1.32901
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_typks"]
 cull_mode = 2
 shading_mode = 0
-albedo_color = Color(1, 0, 0, 1)
+albedo_color = Color(0, 0, 0, 1)
 
 [node name="Enemy" type="CharacterBody3D" groups=["enemy"]]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
@@ -35,18 +35,21 @@ shape = SubResource("SphereShape3D_kf1cp")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.83627)
 
 [node name="Skeleton3D" parent="test_animprzeciwnika6/Armature_001" index="0"]
-bones/0/position = Vector3(0.0630974, -0.32268, 0.0934628)
-bones/1/rotation = Quaternion(-0.00371946, 0.882988, 0.469376, 0.002223)
-bones/3/rotation = Quaternion(-0.499222, -0.0271478, -0.0490505, 0.864658)
-bones/5/rotation = Quaternion(-0.0282528, 0.396315, 0.915755, 0.0594069)
-bones/7/rotation = Quaternion(0.920774, 0.0008395, 0.000351973, -0.390095)
-bones/9/rotation = Quaternion(0.480653, 0.809033, 0.141085, -0.307463)
-bones/11/rotation = Quaternion(-0.136439, 0.259144, 0.48351, 0.824892)
-bones/13/rotation = Quaternion(0.235401, 0.0165576, 0.865094, -0.442635)
-bones/15/rotation = Quaternion(0.908918, -0.378421, -0.149668, -0.0909162)
+bones/0/position = Vector3(0.333463, -0.593035, -0.271419)
+bones/1/rotation = Quaternion(0.00933321, 0.8022, 0.596956, -0.00557993)
+bones/3/rotation = Quaternion(-0.201496, 0.0364808, 0.0659135, 0.976588)
+bones/5/rotation = Quaternion(-0.000199956, 0.537931, 0.842989, 0.000420262)
+bones/7/rotation = Quaternion(0.962675, -0.154663, -0.0648667, -0.212433)
+bones/9/rotation = Quaternion(0.372976, 0.843155, 0.34586, -0.17424)
+bones/11/rotation = Quaternion(0.101435, 0.377101, 0.517633, 0.76129)
+bones/13/rotation = Quaternion(0.107378, 0.277013, 0.867942, -0.398007)
+bones/15/rotation = Quaternion(0.848994, -0.424528, -0.256858, 0.181682)
 
 [node name="Sphere" parent="test_animprzeciwnika6/Armature_001/Skeleton3D" index="0"]
 surface_material_override/0 = SubResource("StandardMaterial3D_typks")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]

@@ -10,5 +10,5 @@ func _ready():
 func _process(delta):
 	pass
 
-func get_dream():
+func get_dream(dream):
 	$AnimationPlayer.play("get_dream")

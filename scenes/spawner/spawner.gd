@@ -1,29 +1,22 @@
 extends Node3D
 signal spawned
 
-@onready var nod = get_parent().get_node("Enemies")
+@onready var nod = get_parent().get_parent().get_node("Enemies")
 
 @export var horizontal := false
 
 var mob = preload("res://scenes/enemy/enemy.tscn")
-#var foods = ["1","2","3","4"]
-#var i
-#var bonus_speed = 0.0
-#var bonus_cld = 0.0
-#var value = 0.0
 
 func _ready():
-	#mob = load("res://prisoner.tscn")
 	randomize()
-	#i = foods.pick_random()
 	_on_timer_timeout()
 
 func _on_timer_timeout():
 	spawn()
-	$Timer.start(randf_range(1.0,2.0))
+	$Timer.start(randf_range(3.0,6.0))
 
 func spawn():
-	if get_parent().end:
+	if nod.get_children().size() > 10:
 		return
 	emit_signal("spawned")
 	var p: float

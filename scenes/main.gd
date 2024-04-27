@@ -18,14 +18,9 @@ func _process(delta):
 func win(dream):
 	if not win_flag:
 		win_flag = true
-		Diary.get_dream()
-
-func _on_spawner_spawned():
-	enemies += 1
-	if enemies >= max_enemies:
-		end = true
+		Diary.get_dream(dream)
 
 func game_over():
-	if not end and not over:
+	if not over:
 		over = true
 		get_tree().reload_current_scene()

@@ -5,7 +5,7 @@
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_krm6v"]
 cull_mode = 2
 shading_mode = 0
-albedo_color = Color(0, 0, 0, 1)
+albedo_color = Color(1, 0.121569, 0.113725, 1)
 
 [node name="maincharacter_wysrodkowany" instance=ExtResource("1_ww0iv")]
 

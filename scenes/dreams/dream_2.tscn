@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://bc3npig5r30r8"]
+
+[ext_resource type="PackedScene" uid="uid://d0ijpkkd2v0b" path="res://scenes/defence/defence.tscn" id="1_u36gt"]
+[ext_resource type="PackedScene" uid="uid://dammjcic25lsj" path="res://scenes/dreams/wspomnienie_2.tscn" id="2_ib45d"]
+
+[node name="Dream2" instance=ExtResource("1_u36gt")]
+
+[node name="wspomnienie2" parent="." index="2" instance=ExtResource("2_ib45d")]
+
+[editable path="wspomnienie2"]

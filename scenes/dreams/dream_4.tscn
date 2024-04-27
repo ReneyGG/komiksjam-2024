@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://ttmlusuawhcc"]
+
+[ext_resource type="PackedScene" uid="uid://d0ijpkkd2v0b" path="res://scenes/defence/defence.tscn" id="1_nff2x"]
+[ext_resource type="PackedScene" uid="uid://chnyylvejlv78" path="res://scenes/dreams/wspomnienie_4.tscn" id="2_p1y5p"]
+
+[node name="Dream4" instance=ExtResource("1_nff2x")]
+
+[node name="wspomnienie4" parent="." index="2" instance=ExtResource("2_p1y5p")]

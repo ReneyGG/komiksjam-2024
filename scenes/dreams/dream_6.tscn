@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://d2k53xd1jelaw"]
+
+[ext_resource type="PackedScene" uid="uid://d0ijpkkd2v0b" path="res://scenes/defence/defence.tscn" id="1_ib4j4"]
+[ext_resource type="PackedScene" uid="uid://cxnt7hbo1ceyf" path="res://scenes/dreams/wspomnienie_6.tscn" id="2_qmul3"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d3cdm"]
+cull_mode = 2
+shading_mode = 0
+albedo_color = Color(1, 0.121569, 0.113725, 1)
+
+[node name="Dream6" instance=ExtResource("1_ib4j4")]
+
+[node name="wspomnienie6" parent="." index="2" instance=ExtResource("2_qmul3")]
+
+[node name="Organic Shape" parent="wspomnienie6" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_d3cdm")
+
+[editable path="wspomnienie6"]

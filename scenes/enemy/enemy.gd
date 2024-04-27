@@ -5,11 +5,14 @@ extends CharacterBody3D
 var speed = 2.0
 var friction = 0.15
 var acceleration = 0.1
-var target
+var target = null
 var attack := false
 var blobs = []
 
 func _ready():
+	randomize()
+	$Timer.start(randf_range(0.0,1.0))
+	await $Timer.timeout
 	$test_animprzeciwnika6/AnimationPlayer.play("Armature_001Action_001")
 	var pick = [0,1].pick_random()
 	if pick == 0:
@@ -18,6 +21,8 @@ func _ready():
 		target = get_parent().get_parent().get_node("Points").get_children().pick_random()
 
 func _process(delta):
+	if not target:
+		return
 	for i in blobs:
 		i.hit()
 	var direction = global_position.direction_to(target.global_position)
