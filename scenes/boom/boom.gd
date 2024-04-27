@@ -1,6 +1,6 @@
 extends Node3D
 
-@onready var scene_camera = get_parent().get_parent().get_node("Camera3D")
+@onready var scene_camera = get_parent().get_parent().get_node("CamManager")
 
 func _ready():
 	$AnimatedSprite3D.play("default")

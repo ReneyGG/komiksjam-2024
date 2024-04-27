@@ -10,12 +10,15 @@ height = 1.80295
 radius = 1.32901
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_typks"]
+cull_mode = 2
+shading_mode = 0
 albedo_color = Color(1, 0, 0, 1)
 
 [node name="Enemy" type="CharacterBody3D" groups=["enemy"]]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 collision_layer = 6
 collision_mask = 6
+input_ray_pickable = false
 script = ExtResource("1_tjcq3")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

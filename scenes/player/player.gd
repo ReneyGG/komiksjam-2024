@@ -4,24 +4,35 @@ extends CharacterBody3D
 
 @export var camera : Node
 
-var speed = 8
+var speed = 4
 var friction = 0.15
 var acceleration = 0.1
 var projectile = preload("res://scenes/boom/boom.tscn")
 var stop_move = false
 var hp = 100.0
 var dead := false
+var target_dream = null
+var healing := false
 
 func _ready():
-	$maincharacter3/AnimationPlayer.play("ArmatureAction")
+	$maincharacter_wysrodkowany/AnimationPlayer.play("ArmatureAction")
 
-func _process(delta):
+func _physics_process(delta):
 	if dead:
 		return
-	if stop_move:
-		return
+	#if stop_move:
+		#return
 	if(navigationAgent.is_navigation_finished()):
 		return
+	
+	if Input.is_action_pressed("space"):
+		if target_dream:
+			if target_dream.power < 100:
+				target_dream.heal()
+				if camera.fov > 45:
+					camera.fov -= 0.03
+	else:
+		camera.fov = lerp(camera.fov, 75.0, 0.2)
 	
 	moveToPoint(delta, speed)
 
@@ -29,11 +40,14 @@ func moveToPoint(delta, speed):
 	var targetPos = navigationAgent.get_next_path_position()
 	var direction = global_position.direction_to(targetPos)
 	faceDirection(targetPos)
-	velocity = velocity.lerp(direction.normalized() * speed, acceleration)
+	if global_position.distance_to(navigationAgent.target_position) > 1.0:
+		velocity = velocity.lerp(direction.normalized() * speed, acceleration)
+	else:
+		velocity = velocity.lerp(Vector3.ZERO, friction)
 	move_and_slide()
 
 func faceDirection(direction):
-	look_at(Vector3(direction.x, global_position.y, direction.z), Vector3.UP)
+	$maincharacter_wysrodkowany.look_at(Vector3(direction.x, global_position.y, direction.z), Vector3.UP)
 
 func hit():
 	if dead:
@@ -87,3 +101,11 @@ func _input(event):
 
 func _on_cooldown_timeout():
 	stop_move = false
+
+func _on_area_3d_body_entered(body):
+	if body.is_in_group("obelisk"):
+		target_dream = body
+
+func _on_area_3d_body_exited(body):
+	if body.is_in_group("obelisk"):
+		target_dream = null

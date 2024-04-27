@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://tth21oiigqb"]
+
+[ext_resource type="PackedScene" uid="uid://c45y7o5n0x0ws" path="res://assets/maincharacter_wysrodkowany.glb" id="1_ww0iv"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_krm6v"]
+cull_mode = 2
+shading_mode = 0
+albedo_color = Color(0, 0, 0, 1)
+
+[node name="maincharacter_wysrodkowany" instance=ExtResource("1_ww0iv")]
+
+[node name="Mball_001" parent="Armature/Skeleton3D" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_krm6v")

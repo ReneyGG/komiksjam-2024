@@ -18,7 +18,7 @@ func _process(delta):
 func win(dream):
 	if not win_flag:
 		win_flag = true
-		$Power.available()
+		Diary.get_dream()
 
 func _on_spawner_spawned():
 	enemies += 1

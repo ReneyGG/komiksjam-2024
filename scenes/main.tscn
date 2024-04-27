@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://df0rmkr0v5din" path="res://scenes/spawner/spawner.tscn" id="2_vtbjc"]
 [ext_resource type="PackedScene" uid="uid://d0ijpkkd2v0b" path="res://scenes/defence/defence.tscn" id="3_wfy8b"]
 [ext_resource type="Shader" path="res://scenes/tilt_min.gdshader" id="4_5n10t"]
-[ext_resource type="PackedScene" uid="uid://cn47kwutjxg1w" path="res://scenes/power/power.tscn" id="4_e8dja"]
+[ext_resource type="Script" path="res://scenes/CamManager.gd" id="4_jmwky"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_vpah6"]
 
@@ -17,11 +17,13 @@ sky_material = SubResource("ProceduralSkyMaterial_vpah6")
 [sub_resource type="Environment" id="Environment_t0v6s"]
 background_mode = 2
 sky = SubResource("Sky_8fjwj")
+tonemap_mode = 1
+glow_enabled = true
+glow_bloom = 0.5
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_hwgcl"]
-vertices = PackedVector3Array(-259.5, 0.02, -342.686, -259.5, 0.02, 219.814, 259.5, 0.02, 219.814, 259.5, 0.02, -342.686)
+vertices = PackedVector3Array(-59.5, 0.5, -69.1305, -59.5, 0.5, 59.8695, 59.5, 0.5, 59.8695, 59.5, 0.5, -69.1305)
 polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
-cell_height = 0.01
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_2ifvv"]
 
@@ -30,7 +32,7 @@ size = Vector3(2.01361, 0.001, 2.01001)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_anyl1"]
 shader = ExtResource("4_5n10t")
-shader_parameter/limit = 0.2
+shader_parameter/limit = 0.24
 shader_parameter/blur = 2.0
 
 [node name="Main" type="Node3D"]
@@ -39,14 +41,12 @@ script = ExtResource("1_0se0w")
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_t0v6s")
 
-[node name="probna_scenka1" parent="." instance=ExtResource("2_6grhc")]
-transform = Transform3D(0.857993, 0, -0.513661, 0, 1, 0, 0.513661, 0, 0.857993, 0, 0.0911384, 0)
-
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0573528, 0)
 navigation_mesh = SubResource("NavigationMesh_hwgcl")
 
 [node name="Floor" type="MeshInstance3D" parent="NavigationRegion3D"]
-transform = Transform3D(260, 0, 0, 0, 69.316, 0, 0, 0, 281.736, 0, 0, -61.4498)
+transform = Transform3D(60, 0, 0, 0, 15.996, 0, 0, 0, 65.016, 0, 0, -4.61451)
 mesh = SubResource("PlaneMesh_2ifvv")
 skeleton = NodePath("../..")
 
@@ -58,14 +58,27 @@ collision_mask = 7
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00186157, 0, -0.00427246)
 shape = SubResource("BoxShape3D_pqyeq")
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.555193, 0.831722, 0, -0.831722, 0.555193, 0.67594, 3.57499, 2.83231)
+[node name="probna_scenka1" parent="." instance=ExtResource("2_6grhc")]
+transform = Transform3D(0.857993, 0, -0.513661, 0, 1, 0, 0.513661, 0, 0.857993, 0, 0.0177866, 0)
+
+[node name="Player" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("1_kwvwq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.599962, 0.554909, -0.20791)
+camera = NodePath("../CamManager/Camera3D")
+
+[node name="CamManager" type="Node3D" parent="."]
+script = ExtResource("4_jmwky")
+
+[node name="Camera3D" type="Camera3D" parent="CamManager" node_paths=PackedStringArray("target")]
+transform = Transform3D(1, 0, 0, 0, 0.555193, 0.831722, 0, -0.831722, 0.555193, -0.6, 3, 1.73)
 current = true
 script = ExtResource("2_cnx6x")
+target = NodePath("../../Player")
+smooth_speed = 2.0
+offset = Vector3(0, 3, 1.7)
 
-[node name="CanvasLayer" type="CanvasLayer" parent="Camera3D"]
+[node name="CanvasLayer" type="CanvasLayer" parent="CamManager/Camera3D"]
 
-[node name="Control" type="Control" parent="Camera3D/CanvasLayer"]
+[node name="Control" type="Control" parent="CamManager/Camera3D/CanvasLayer"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -73,7 +86,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ColorRect" type="ColorRect" parent="Camera3D/CanvasLayer/Control"]
+[node name="ColorRect" type="ColorRect" parent="CamManager/Camera3D/CanvasLayer/Control"]
 material = SubResource("ShaderMaterial_anyl1")
 layout_mode = 1
 anchors_preset = 15
@@ -82,41 +95,33 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Player" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("1_kwvwq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.141226, -0.20791)
-camera = NodePath("../Camera3D")
-
 [node name="Projectiles" type="Node3D" parent="."]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-4.37114e-08, -0.866025, 0.5, 0, 0.5, 0.866025, -1, 3.78552e-08, -2.18557e-08, 59.1026, 50.6433, -59.8691)
+transform = Transform3D(-4.336e-08, -0.922336, 0.386389, -5.53147e-09, 0.386389, 0.922336, -1, 3.78552e-08, -2.18557e-08, 59.1026, 50.6433, -59.8691)
 shadow_enabled = true
-directional_shadow_max_distance = 200.0
+directional_shadow_max_distance = 10.0
 
 [node name="Spawner" parent="." instance=ExtResource("2_vtbjc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.914849, 0, -3.73946)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.914849, 0.318934, -3.73946)
 horizontal = true
 
 [node name="Spawner2" parent="." instance=ExtResource("2_vtbjc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.4687)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.318934, 2.4687)
 horizontal = true
 
 [node name="Spawner3" parent="." instance=ExtResource("2_vtbjc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.03041, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.03041, 0.318934, 0)
 
 [node name="Spawner4" parent="." instance=ExtResource("2_vtbjc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.7946, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.7946, 0.318934, 0)
 
 [node name="Enemies" type="Node3D" parent="."]
-
-[node name="Power" parent="." instance=ExtResource("4_e8dja")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0.716049, 0.772076, -1.18691)
-visible = false
 
 [node name="Points" type="Node3D" parent="."]
 
 [node name="Defence" parent="Points" instance=ExtResource("3_wfy8b")]
-transform = Transform3D(0.998723, 0, 0.0505232, 0, 1, 0, -0.0505232, 0, 0.998723, 0.749897, 0.196599, -0.16329)
+transform = Transform3D(0.998723, 0, 0.0505232, 0, 1, 0, -0.0505232, 0, 0.998723, 2.85679, 0.196599, -0.16329)
 
 [connection signal="spawned" from="Spawner" to="." method="_on_spawner_spawned"]
 [connection signal="spawned" from="Spawner2" to="." method="_on_spawner_spawned"]
