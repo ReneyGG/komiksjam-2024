@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://bme1tj3ak7g06"]
+
+[ext_resource type="Script" path="res://scenes/frame_freeze.gd" id="1_0qkl7"]
+
+[node name="FrameFreeze" type="Node"]
+script = ExtResource("1_0qkl7")
+
+[node name="Freeze" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="Freeze" to="." method="_on_freeze_timeout"]

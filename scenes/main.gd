@@ -9,6 +9,7 @@ var win_flag := false
 var dreams := 0
 
 func _ready():
+	Diary.reset()
 	$CanvasLayer/Control/Forgor.hide()
 	Diary.spawn_boss.connect(spawn_boss)
 
@@ -29,8 +30,10 @@ func win(dream):
 		#win_flag = true
 		#Diary.get_dream(dream)
 
-func game_over():
+func game_over(pos):
 	if not over:
 		over = true
-		$CanvasLayer/Control/Forgor.show()
 		get_tree().paused = true
+		$CamManager/Camera3D.pan_lose(pos)
+		#$CanvasLayer/Control/Forgor.show()
+

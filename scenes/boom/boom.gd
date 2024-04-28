@@ -12,6 +12,7 @@ func _process(delta):
 func explode():
 	Sfx.play_sound("boom")
 	scene_camera.shake()
+	FrameFreeze.frame_freeze(0.1,0.15)
 	for i in $Area3D.get_overlapping_bodies():
 		i.hit()
 	queue_free()

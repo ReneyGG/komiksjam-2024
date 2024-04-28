@@ -2,13 +2,14 @@ extends CharacterBody3D
 
 @onready var player = get_parent().get_parent().get_node("Player")
 
-var speed = 2.0
+var speed = 1.0
 var friction = 0.15
 var acceleration = 0.1
 var target = null
 var attack := false
 var blobs = []
 var health := 5
+var dead = false
 
 func _ready():
 	target = player
@@ -30,7 +31,9 @@ func faceDirection(direction):
 
 func hit():
 	health -= 1
-	if health <= 0:
+	$GPUParticles3D.restart()
+	if health <= 0 and not dead:
+		dead = true
 		Fade.fade("res://scenes/win_screen/win_screen.tscn")
 		queue_free()
 

@@ -22,29 +22,33 @@ func _on_exit_button_pressed():
 	get_tree().quit()
 
 
-#func _on_start_button_mouse_entered():
-	#$StartButton/TextureRect.scale = lerp($StartButton/TextureRect.scale, Vector2(1.5,1.5), 0.2)
-#
-#func _on_start_button_mouse_exited():
-	#$StartButton/TextureRect.scale = lerp($StartButton/TextureRect.scale, Vector2(1,1), 0.2)
-#
-#
-#func _on_tutorial_button_mouse_entered():
-	#$TutorialButton/TextureRect.scale = lerp($TutorialButton/TextureRect.scale, Vector2(1.5,1.5), 0.2)
-#
-#func _on_tutorial_button_mouse_exited():
-	#$TutorialButton/TextureRect.scale = lerp($TutorialButton/TextureRect.scale, Vector2(1,1), 0.2)
-#
-#
-#func _on_credits_button_mouse_entered():
-	#$CreditsButton/TextureRect.scale = lerp($CreditsButton/TextureRect.scale, Vector2(1.5,1.5), 0.2)
-#
-#func _on_credits_button_mouse_exited():
-	#$CreditsButton/TextureRect.scale = lerp($CreditsButton/TextureRect.scale, Vector2(1,1), 0.2)
-#
-#
-#func _on_exit_button_mouse_entered():
-	#$ExitButton/TextureRect.scale = lerp($ExitButton/TextureRect.scale, Vector2(1.5,1.5), 0.2)
-#
-#func _on_exit_button_mouse_exited():
-	#$ExitButton/TextureRect.scale = lerp($ExitButton/TextureRect.scale, Vector2(1,1), 0.2)
+func _on_start_button_mouse_entered():
+	$Hover.play()
+	$StartButton/Label.scale = lerp($StartButton/Label.scale, Vector2(1.2,1.2), 0.2)
+
+func _on_start_button_mouse_exited():
+	$StartButton/Label.scale = lerp($StartButton/Label.scale, Vector2(1,1), 0.2)
+
+
+func _on_tutorial_button_mouse_entered():
+	$Hover.play()
+	$TutorialButton/Label.scale = lerp($TutorialButton/Label.scale, Vector2(1.2,1.2), 0.2)
+
+func _on_tutorial_button_mouse_exited():
+	$TutorialButton/Label.scale = lerp($TutorialButton/Label.scale, Vector2(1,1), 0.2)
+
+
+func _on_credits_button_mouse_entered():
+	$Hover.play()
+	$CreditsButton/Label.scale = lerp($CreditsButton/Label.scale, Vector2(1.2,1.2), 0.2)
+
+func _on_credits_button_mouse_exited():
+	$CreditsButton/Label.scale = lerp($CreditsButton/Label.scale, Vector2(1,1), 0.2)
+
+
+func _on_exit_button_mouse_entered():
+	$Hover.play()
+	$ExitButton/Label.scale = lerp($ExitButton/Label.scale, Vector2(1.2,1.2), 0.2)
+
+func _on_exit_button_mouse_exited():
+	$ExitButton/Label.scale = lerp($ExitButton/Label.scale, Vector2(1,1), 0.2)

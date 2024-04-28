@@ -18,7 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://cwhhy53ku5ghc" path="res://assets/boom/wybuch_test1-15.png" id="16_peey6"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_p1slh"]
-radius = 0.717942
+radius = 1.04747
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_t6rpf"]
 animations = [{

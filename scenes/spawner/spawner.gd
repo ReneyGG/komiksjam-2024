@@ -13,7 +13,7 @@ func _ready():
 
 func _on_timer_timeout():
 	spawn()
-	#$Timer.start(randf_range(8.0,15.0))
+	$Timer.start(randf_range(0.2, 0.5))
 
 func spawn():
 	if nod.get_children().size() > 10:

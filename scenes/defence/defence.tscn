@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://d0ijpkkd2v0b"]
+[gd_scene load_steps=4 format=3 uid="uid://d0ijpkkd2v0b"]
 
 [ext_resource type="Script" path="res://scenes/defence/defence.gd" id="1_mr1hw"]
+[ext_resource type="FontFile" uid="uid://d36jq6ah42c8x" path="res://AmaticSC-Regular.ttf" id="2_e18ey"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_j5foa"]
 size = Vector3(1, 1.93262, 1)
@@ -16,6 +17,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.108643, 0)
 shape = SubResource("BoxShape3D_j5foa")
 
 [node name="Label3D" type="Label3D" parent="."]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 1.45324, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 billboard = 1
+texture_filter = 1
 text = "100%"
+font = ExtResource("2_e18ey")
+font_size = 96

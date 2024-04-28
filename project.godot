@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="KomiksJam2024"
-run/main_scene="res://scenes/opening/opening.tscn"
+run/main_scene="res://scenes/logo.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -21,6 +21,7 @@ Diary="*res://scenes/diary/diary.tscn"
 Sfx="*res://scenes/sfx.tscn"
 GlobalTheme="*res://scenes/theme.tscn"
 Fade="*res://scenes/fade/fade.tscn"
+FrameFreeze="*res://scenes/frame_freeze.tscn"
 
 [display]
 

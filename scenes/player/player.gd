@@ -4,7 +4,7 @@ extends CharacterBody3D
 
 @export var camera : Node
 
-var speed = 4
+var speed = 3
 var friction = 0.15
 var acceleration = 0.1
 var projectile = preload("res://scenes/boom/boom.tscn")
@@ -51,16 +51,17 @@ func faceDirection(direction):
 	$maincharacter_wysrodkowany.look_at(Vector3(direction.x, global_position.y, direction.z), Vector3.UP)
 
 func hit():
-	if dead:
-		return
-	hp -= 0.1
-	$"../CanvasLayer/Control/TextureRect".modulate.a += 0.001
-	if hp <= 0:
-		dead = true
-		game_over()
+	pass
+	#if dead:
+		#return
+	#hp -= 0.1
+	#$"../CanvasLayer/Control/TextureRect".modulate.a += 0.001
+	#if hp <= 0:
+		#dead = true
+		#game_over()
 
 func game_over():
-	get_parent().game_over()
+	get_parent().game_over(global_position)
 
 func _input(event):
 	if dead:

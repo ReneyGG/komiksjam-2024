@@ -20,7 +20,7 @@ func _ready():
 	else:
 		target = get_parent().get_parent().get_node("Points").get_children().pick_random()
 
-func _process(delta):
+func _physics_process(delta):
 	if not target:
 		return
 	for i in blobs:
@@ -34,6 +34,10 @@ func faceDirection(direction):
 	look_at(Vector3(direction.x, global_position.y, direction.z), Vector3.UP)
 
 func hit():
+	target = null
+	$test_animprzeciwnika6/Armature_001/Skeleton3D/Sphere.hide()
+	$GPUParticles3D.restart()
+	await $GPUParticles3D.finished
 	queue_free()
 
 func _on_area_3d_body_entered(body):
