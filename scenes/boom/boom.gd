@@ -10,6 +10,7 @@ func _process(delta):
 	pass
 
 func explode():
+	Sfx.play_sound("boom")
 	scene_camera.shake()
 	for i in $Area3D.get_overlapping_bodies():
 		i.hit()

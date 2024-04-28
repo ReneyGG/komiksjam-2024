@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://lown5048a358"
+path="res://.godot/imported/dziennik odblokowane wspomnienie.mp3-dd4c70ce2eb2e5adafc733ba0abd8315.mp3str"
+
+[deps]
+
+source_file="res://sfx/dziennik odblokowane wspomnienie.mp3"
+dest_files=["res://.godot/imported/dziennik odblokowane wspomnienie.mp3-dd4c70ce2eb2e5adafc733ba0abd8315.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

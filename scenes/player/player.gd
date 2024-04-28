@@ -29,10 +29,11 @@ func _physics_process(delta):
 		if target_dream:
 			if target_dream.power < 100:
 				target_dream.heal()
-				if camera.fov > 45:
-					camera.fov -= 0.03
+				if camera.fov > 30:
+					camera.fov -= 0.02
 	else:
-		camera.fov = lerp(camera.fov, 75.0, 0.2)
+		pass
+		camera.fov = lerp(camera.fov, 50.0, 0.2)
 	
 	moveToPoint(delta, speed)
 
@@ -53,7 +54,7 @@ func hit():
 	if dead:
 		return
 	hp -= 0.1
-	$"../CamManager/Camera3D/CanvasLayer/Control/TextureRect".modulate.a += 0.001
+	$"../CanvasLayer/Control/TextureRect".modulate.a += 0.001
 	if hp <= 0:
 		dead = true
 		game_over()

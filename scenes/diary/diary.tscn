@@ -1,11 +1,18 @@
-[gd_scene load_steps=5 format=3 uid="uid://hiud7g2dilpu"]
+[gd_scene load_steps=14 format=3 uid="uid://hiud7g2dilpu"]
 
 [ext_resource type="Script" path="res://scenes/diary/diary.gd" id="1_7rivb"]
-[ext_resource type="Texture2D" uid="uid://betw0c7715h2s" path="res://assets/diary.png" id="2_qcto8"]
+[ext_resource type="Texture2D" uid="uid://ctglgqtbksxy8" path="res://assets/pics/dziennik.png" id="2_c0gjd"]
+[ext_resource type="Texture2D" uid="uid://cmuxatdtbyi8f" path="res://assets/pics/1_zabawka_miniaturka.png" id="3_c42b3"]
+[ext_resource type="Texture2D" uid="uid://cyq2t3os67nab" path="res://assets/pics/2_plac_miniaturka.png" id="4_qnivn"]
+[ext_resource type="Texture2D" uid="uid://ds23b4f1nkj1k" path="res://assets/pics/3_jedzonko_miniaturka.png" id="5_3f27r"]
+[ext_resource type="Texture2D" uid="uid://c6tur4buy5m7b" path="res://assets/pics/4_klotnia_miniaturka.png" id="6_yg2ba"]
+[ext_resource type="Texture2D" uid="uid://y7o65m555xd1" path="res://assets/pics/5_strych_miniaturka.png" id="7_02p7y"]
+[ext_resource type="Texture2D" uid="uid://cslys8bq8jyce" path="res://assets/pics/6_ryba_miniaturka.png" id="8_v1ynd"]
+[ext_resource type="Texture2D" uid="uid://cw5br5a0ip2fv" path="res://assets/pics/1_zabawka.png" id="9_307wo"]
 
 [sub_resource type="Animation" id="Animation_5qgbo"]
 resource_name = "get_dream"
-length = 3.0
+length = 4.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -13,18 +20,123 @@ tracks/0/path = NodePath("TextureRect:position")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.9, 1.9, 3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.9, 1.9, 2.9, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(0, 675), Vector2(0, 100), Vector2(0, 100), Vector2(0, 675)]
+"values": [Vector2(0, 1084), Vector2(0, 100), Vector2(0, 100), Vector2(0, 100), Vector2(0, 1084)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 3.5, 4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"values": [{
+"args": [],
+"method": &"pause"
+}, {
+"args": [],
+"method": &"unpause"
+}, {
+"args": [],
+"method": &"_on_closeup_button_pressed"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:b_flag")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(4),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_i5gie"]
+resource_name = "close_diary"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 100), Vector2(0, 1084)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.6),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"unpause"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:b_flag")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_8hq3w"]
+resource_name = "open_diary"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 1135), Vector2(0, 100)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"pause"
+}]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5x3iy"]
 _data = {
-"get_dream": SubResource("Animation_5qgbo")
+"close_diary": SubResource("Animation_i5gie"),
+"get_dream": SubResource("Animation_5qgbo"),
+"open_diary": SubResource("Animation_8hq3w")
 }
 
 [node name="Diary" type="CanvasLayer"]
+process_mode = 3
 layer = 2
 script = ExtResource("1_7rivb")
 
@@ -32,15 +144,228 @@ script = ExtResource("1_7rivb")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 675.0
-offset_bottom = 675.0
+offset_top = 179.212
+offset_bottom = 179.213
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_qcto8")
+texture = ExtResource("2_c0gjd")
 expand_mode = 1
 stretch_mode = 4
+
+[node name="OutButton" type="TextureButton" parent="TextureRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 8.0
+offset_bottom = -0.000976563
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Pic1" type="TextureRect" parent="TextureRect"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("3_c42b3")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="1" type="TextureButton" parent="TextureRect/Pic1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 297.0
+offset_top = 187.0
+offset_right = -1343.0
+offset_bottom = -563.001
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+
+[node name="Pic2" type="TextureRect" parent="TextureRect"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -0.000976563
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("4_qnivn")
+
+[node name="2" type="TextureButton" parent="TextureRect/Pic2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 635.0
+offset_top = 268.0
+offset_right = -1023.0
+offset_bottom = -571.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+
+[node name="Pic3" type="TextureRect" parent="TextureRect"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("5_3f27r")
+
+[node name="3" type="TextureButton" parent="TextureRect/Pic3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 443.0
+offset_top = 569.0
+offset_right = -1012.0
+offset_bottom = -196.001
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+
+[node name="Pic4" type="TextureRect" parent="TextureRect"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("6_yg2ba")
+
+[node name="4" type="TextureButton" parent="TextureRect/Pic4"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1031.0
+offset_top = 268.0
+offset_right = -639.0
+offset_bottom = -471.001
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+
+[node name="Pic5" type="TextureRect" parent="TextureRect"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("7_02p7y")
+
+[node name="5" type="TextureButton" parent="TextureRect/Pic5"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1356.0
+offset_top = 162.0
+offset_right = -297.0
+offset_bottom = -583.001
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+
+[node name="Pic6" type="TextureRect" parent="TextureRect"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("8_v1ynd")
+
+[node name="6" type="TextureButton" parent="TextureRect/Pic6"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1168.0
+offset_top = 659.0
+offset_right = -368.0
+offset_bottom = -173.001
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+
+[node name="Darken" type="ColorRect" parent="TextureRect"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -234.0
+offset_top = -311.0
+offset_right = 349.0
+offset_bottom = 165.999
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.317647)
+
+[node name="Closeup" type="TextureRect" parent="TextureRect"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -405.0
+offset_top = -614.0
+offset_right = 405.0
+offset_bottom = 424.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_307wo")
+
+[node name="CloseupButton" type="TextureButton" parent="TextureRect/Closeup"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MenuButton" type="TextureButton" parent="TextureRect"]
+layout_mode = 0
+offset_left = 224.0
+offset_top = 113.0
+offset_right = 510.0
+offset_bottom = 195.0
+mouse_default_cursor_shape = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_5x3iy")
 }
+
+[connection signal="pressed" from="TextureRect/OutButton" to="." method="_on_out_button_pressed"]
+[connection signal="pressed" from="TextureRect/Pic1/1" to="." method="_on__pressed"]
+[connection signal="pressed" from="TextureRect/Pic2/2" to="." method="_on_2_pressed"]
+[connection signal="pressed" from="TextureRect/Pic3/3" to="." method="_on_3_pressed"]
+[connection signal="pressed" from="TextureRect/Pic4/4" to="." method="_on_4_pressed"]
+[connection signal="pressed" from="TextureRect/Pic5/5" to="." method="_on_5_pressed"]
+[connection signal="pressed" from="TextureRect/Pic6/6" to="." method="_on_6_pressed"]
+[connection signal="pressed" from="TextureRect/Closeup/CloseupButton" to="." method="_on_closeup_button_pressed"]
+[connection signal="pressed" from="TextureRect/MenuButton" to="." method="_on_menu_button_pressed"]

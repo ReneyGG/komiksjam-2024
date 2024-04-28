@@ -10,7 +10,6 @@ collision_layer = 6
 collision_mask = 6
 input_ray_pickable = false
 script = ExtResource("1_mr1hw")
-power = 30.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.108643, 0)

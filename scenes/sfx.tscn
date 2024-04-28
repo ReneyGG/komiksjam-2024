@@ -1,0 +1,44 @@
+[gd_scene load_steps=11 format=3 uid="uid://b5n2l2k34h406"]
+
+[ext_resource type="Script" path="res://scenes/sfx.gd" id="1_lfxvq"]
+[ext_resource type="AudioStream" uid="uid://stc7qs3b4g75" path="res://sfx/death.mp3" id="1_ud8gs"]
+[ext_resource type="AudioStream" uid="uid://lown5048a358" path="res://sfx/dziennik odblokowane wspomnienie.mp3" id="2_xxfvm"]
+[ext_resource type="AudioStream" uid="uid://igqiwhcy2465" path="res://sfx/jedzonko.mp3" id="3_iih1b"]
+[ext_resource type="AudioStream" uid="uid://c0mn58khn0ulk" path="res://sfx/menu.mp3" id="4_m0wd5"]
+[ext_resource type="AudioStream" uid="uid://c3aq4xbgdaqnl" path="res://sfx/kids-voices-with-natural-reverb-7094.mp3" id="5_0hwma"]
+[ext_resource type="AudioStream" uid="uid://cww4p54ha58s8" path="res://sfx/podloga_skrzyp.mp3" id="6_l2dn2"]
+[ext_resource type="AudioStream" uid="uid://cs30wav7lt3pf" path="res://sfx/pozytywka zabawka.mp3" id="7_353t4"]
+[ext_resource type="AudioStream" uid="uid://bxhq0qrrn8vmb" path="res://sfx/zabawka.mp3" id="8_xo3uw"]
+[ext_resource type="AudioStream" uid="uid://cra7yk23bcgso" path="res://sfx/mixkit-cartoon-blood-and-gore-hit-726.wav" id="10_ibqd7"]
+
+[node name="Sfx" type="Node"]
+process_mode = 3
+script = ExtResource("1_lfxvq")
+
+[node name="Death" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_ud8gs")
+
+[node name="Dziennik" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_xxfvm")
+
+[node name="Jedzonko" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_iih1b")
+
+[node name="Button" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_m0wd5")
+
+[node name="Kids" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_0hwma")
+
+[node name="Podloga" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_l2dn2")
+
+[node name="Pozytywka" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_353t4")
+
+[node name="Zabawka" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_xo3uw")
+
+[node name="Boom" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_ibqd7")
+volume_db = -24.0

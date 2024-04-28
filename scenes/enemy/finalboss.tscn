@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://ktcm2u1snqof"]
+
+[ext_resource type="PackedScene" uid="uid://b7liarrshra3q" path="res://assets/finalboss.glb" id="1_7vcm3"]
+
+[node name="finalboss" instance=ExtResource("1_7vcm3")]

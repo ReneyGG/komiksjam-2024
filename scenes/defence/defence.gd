@@ -10,16 +10,17 @@ func _ready():
 	$Label3D.text = "0%"
 
 func _physics_process(delta):
-	rotation_degrees.y += 1 * delta
-	if power >= 100.0:
-		get_parent().get_parent().win(dream)
+	rotation_degrees.y += 10 * delta
+	if power >= 100.0 and not yes:
+		yes = true
+		Diary.get_dream(dream)
 	
 	$Label3D.text = str(int(power))+"%"
 
 func heal():
 	if power < 100:
-		power += 0.2
+		power += 1
 
 func hit():
 	if power > 0:
-		power -= 0.5
+		power -= 0.2

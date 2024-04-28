@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cs30wav7lt3pf"
+path="res://.godot/imported/pozytywka zabawka.mp3-0ad589375c80fa29aa1ee42dde7d3eb5.mp3str"
+
+[deps]
+
+source_file="res://sfx/pozytywka zabawka.mp3"
+dest_files=["res://.godot/imported/pozytywka zabawka.mp3-0ad589375c80fa29aa1ee42dde7d3eb5.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

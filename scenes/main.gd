@@ -6,9 +6,17 @@ extends Node3D
 var enemies = 0
 var over := false
 var win_flag := false
+var dreams := 0
 
 func _ready():
-	pass # Replace with function body.
+	$CanvasLayer/Control/Forgor.hide()
+	Diary.spawn_boss.connect(spawn_boss)
+
+func spawn_boss():
+	var boss = load("res://scenes/enemy/boss.tscn")
+	var init = boss.instantiate()
+	get_node("Enemies").add_child(init)
+	init.global_position = get_node("Player").global_position - Vector3(0,0,15)
 
 func _process(delta):
 	pass
@@ -16,11 +24,13 @@ func _process(delta):
 		#win()
 
 func win(dream):
-	if not win_flag:
-		win_flag = true
-		Diary.get_dream(dream)
+	pass
+	#if not win_flag:
+		#win_flag = true
+		#Diary.get_dream(dream)
 
 func game_over():
 	if not over:
 		over = true
-		get_tree().reload_current_scene()
+		$CanvasLayer/Control/Forgor.show()
+		get_tree().paused = true
