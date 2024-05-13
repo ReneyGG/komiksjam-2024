@@ -3,9 +3,11 @@
 [ext_resource type="Script" path="res://scenes/frame_freeze.gd" id="1_0qkl7"]
 
 [node name="FrameFreeze" type="Node"]
+process_mode = 3
 script = ExtResource("1_0qkl7")
 
 [node name="Freeze" type="Timer" parent="."]
+process_callback = 0
 one_shot = true
 
 [connection signal="timeout" from="Freeze" to="." method="_on_freeze_timeout"]

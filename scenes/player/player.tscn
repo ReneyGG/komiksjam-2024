@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://8k7g88vnyxle"]
+[gd_scene load_steps=9 format=3 uid="uid://8k7g88vnyxle"]
 
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_xcyma"]
 [ext_resource type="PackedScene" uid="uid://tth21oiigqb" path="res://scenes/player/maincharacter_wysrodkowany.tscn" id="2_d18ml"]
+[ext_resource type="AudioStream" uid="uid://w5e7kbrlb5rv" path="res://sfx/impactSoft_heavy_000.ogg" id="3_j462y"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vxki8"]
 radius = 0.128063
@@ -9,6 +10,23 @@ height = 0.551999
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_d1b66"]
 radius = 1.27363
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_tfsal"]
+lifetime_randomness = 0.5
+direction = Vector3(0, 1, 0)
+spread = 180.0
+initial_velocity_min = 12.0
+initial_velocity_max = 12.0
+scale_min = 0.1
+scale_max = 0.3
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hewst"]
+cull_mode = 2
+shading_mode = 0
+albedo_color = Color(1, 0.121569, 0.113725, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_2rqhq"]
+material = SubResource("StandardMaterial3D_hewst")
 
 [node name="Player" type="CharacterBody3D" groups=["player"]]
 collision_layer = 2
@@ -38,6 +56,20 @@ input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 shape = SubResource("SphereShape3D_d1b66")
+
+[node name="Hit" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("3_j462y")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+process_mode = 3
+emitting = false
+amount = 20
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_tfsal")
+draw_pass_1 = SubResource("SphereMesh_2rqhq")
 
 [connection signal="timeout" from="Cooldown" to="." method="_on_cooldown_timeout"]
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

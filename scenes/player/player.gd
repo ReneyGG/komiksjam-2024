@@ -10,7 +10,7 @@ var acceleration = 0.1
 var rotate_speed = 1000
 var projectile = preload("res://scenes/boom/boom.tscn")
 var stop_move = false
-var hp = 100.0
+var hp = 10
 var dead := false
 var target_dream = null
 var healing := false
@@ -45,6 +45,8 @@ func _physics_process(delta):
 		velocity = velocity.lerp(direction.normalized() * speed, acceleration)
 	else:
 		velocity = velocity.lerp(Vector3.ZERO, friction)
+	
+	velocity.y = 0
 	move_and_slide()
 	
 	#moveToPoint(delta, speed)
@@ -57,16 +59,26 @@ func moveToPoint(delta, speed):
 		velocity = velocity.lerp(direction.normalized() * speed, acceleration)
 	else:
 		velocity = velocity.lerp(Vector3.ZERO, friction)
+	
 	move_and_slide()
 
 func faceDirection(direction):
 	$maincharacter_wysrodkowany.look_at(Vector3(direction.x, global_position.y, direction.z), Vector3.UP)
 
 func hit(source):
-	pass
-	#var point = source.global_position - self.global_position
-	#point = point.normalized()
-	#velocity -= point * 8
+	var point = source.global_position - self.global_position
+	point = point.normalized()
+	point.y = 0
+	velocity -= point * 12
+	hp -= 1
+	$Hit.play()
+	get_parent().get_node("AnimationPlayer").play("get_hit")
+	camera.get_parent().shake()
+	FrameFreeze.frame_freeze(0.1,0.2)
+	if hp <= 0:
+		$GPUParticles3D.restart()
+		$maincharacter_wysrodkowany.hide()
+		game_over()
 
 func game_over():
 	get_parent().game_over(global_position)

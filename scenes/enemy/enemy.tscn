@@ -23,13 +23,13 @@ initial_velocity_max = 12.0
 scale_min = 0.1
 scale_max = 0.3
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tvtmy"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cecky"]
 cull_mode = 2
 shading_mode = 0
 albedo_color = Color(0, 0, 0, 1)
 
 [sub_resource type="SphereMesh" id="SphereMesh_kf6m3"]
-material = SubResource("StandardMaterial3D_tvtmy")
+material = SubResource("StandardMaterial3D_cecky")
 
 [node name="Enemy" type="CharacterBody3D" groups=["enemy"]]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
