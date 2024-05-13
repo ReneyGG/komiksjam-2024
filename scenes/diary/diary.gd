@@ -1,6 +1,7 @@
 extends CanvasLayer
 signal spawn_boss
 
+var av := false
 var dreams := 0
 var boss_flag := false
 @export var b_flag = false
@@ -16,6 +17,7 @@ func _process(delta):
 	pass
 
 func reset():
+	av = false
 	dreams = 0
 	boss_flag = false
 	b_flag = false
@@ -28,7 +30,7 @@ func reset():
 	$TextureRect/Pic6.hide()
 
 func _input(event):
-	if Input.is_action_just_pressed("pause"):
+	if Input.is_action_just_pressed("pause") and av:
 		if get_tree().paused:
 			close_diary()
 		else:
@@ -63,6 +65,7 @@ func unpause():
 
 func _on_menu_button_pressed():
 	if not b_flag:
+		$Button.play()
 		b_flag = true
 		close_diary()
 		Fade.fade("res://scenes/menu/menu.tscn")

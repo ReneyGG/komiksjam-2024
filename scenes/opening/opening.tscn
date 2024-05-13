@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://c3ahdgxbvf0ex"]
 
 [ext_resource type="Script" path="res://scenes/opening/opening.gd" id="1_v73mp"]
-[ext_resource type="VideoStream" path="res://cutscenes/anim2.ogv" id="2_qghl7"]
+[ext_resource type="VideoStream" path="res://cutscenes/cutscenka_start.ogv" id="2_hep8x"]
 
 [node name="Opening" type="Control"]
 layout_mode = 3
@@ -19,7 +19,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-stream = ExtResource("2_qghl7")
+stream = ExtResource("2_hep8x")
 autoplay = true
 
 [connection signal="finished" from="VideoStreamPlayer" to="." method="_on_video_stream_player_finished"]

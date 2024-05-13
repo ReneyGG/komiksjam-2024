@@ -10,6 +10,7 @@ var dreams := 0
 
 func _ready():
 	Diary.reset()
+	Diary.av = true
 	$CanvasLayer/Control/Forgor.hide()
 	Diary.spawn_boss.connect(spawn_boss)
 

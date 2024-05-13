@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://hiud7g2dilpu"]
+[gd_scene load_steps=15 format=3 uid="uid://hiud7g2dilpu"]
 
 [ext_resource type="Script" path="res://scenes/diary/diary.gd" id="1_7rivb"]
 [ext_resource type="Texture2D" uid="uid://ctglgqtbksxy8" path="res://assets/pics/dziennik.png" id="2_c0gjd"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://y7o65m555xd1" path="res://assets/pics/5_strych_miniaturka.png" id="7_02p7y"]
 [ext_resource type="Texture2D" uid="uid://cslys8bq8jyce" path="res://assets/pics/6_ryba_miniaturka.png" id="8_v1ynd"]
 [ext_resource type="Texture2D" uid="uid://cw5br5a0ip2fv" path="res://assets/pics/1_zabawka.png" id="9_307wo"]
+[ext_resource type="AudioStream" uid="uid://c0mn58khn0ulk" path="res://sfx/menu.mp3" id="10_tnmvv"]
 
 [sub_resource type="Animation" id="Animation_i5gie"]
 resource_name = "close_diary"
@@ -399,6 +400,9 @@ mouse_default_cursor_shape = 2
 libraries = {
 "": SubResource("AnimationLibrary_5x3iy")
 }
+
+[node name="Button" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_tnmvv")
 
 [connection signal="pressed" from="TextureRect/OutButton" to="." method="_on_out_button_pressed"]
 [connection signal="pressed" from="TextureRect/Pic1/1" to="." method="_on__pressed"]

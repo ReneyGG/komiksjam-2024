@@ -1,8 +1,7 @@
 extends Control
 
-
 func _ready():
-	pass # Replace with function body.
+	Diary.av = false
 
 func _on_start_button_pressed():
 	$Button.play()

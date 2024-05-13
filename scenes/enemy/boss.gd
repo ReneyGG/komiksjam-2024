@@ -8,7 +8,7 @@ var acceleration = 0.1
 var target = null
 var attack := false
 var blobs = []
-var health := 5
+var health := 9
 var dead = false
 
 func _ready():

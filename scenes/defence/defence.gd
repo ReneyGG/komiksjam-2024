@@ -31,4 +31,4 @@ func hit():
 	if yes:
 		return
 	if power > 0:
-		power -= 0.005
+		power -= 0.004
