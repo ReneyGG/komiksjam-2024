@@ -1,35 +1,36 @@
-[gd_scene load_steps=52 format=3 uid="uid://dm8r0dqavyng7"]
+[gd_scene load_steps=53 format=3 uid="uid://df218ulbtas55"]
 
-[ext_resource type="Script" path="res://scenes/main.gd" id="1_0se0w"]
-[ext_resource type="PackedScene" uid="uid://8k7g88vnyxle" path="res://scenes/player/player.tscn" id="1_kwvwq"]
-[ext_resource type="Script" path="res://scenes/Camera3D.gd" id="2_cnx6x"]
-[ext_resource type="PackedScene" uid="uid://glahq156ruio" path="res://assets/gotowa_mapka.glb" id="2_vktl4"]
-[ext_resource type="PackedScene" uid="uid://df0rmkr0v5din" path="res://scenes/spawner/spawner.tscn" id="2_vtbjc"]
-[ext_resource type="PackedScene" uid="uid://c5gkvpgglwkvl" path="res://assets/morze_lzejsze.glb" id="3_sf172"]
-[ext_resource type="Shader" path="res://scenes/tilt_min.gdshader" id="4_5n10t"]
-[ext_resource type="Script" path="res://scenes/Forgor.gd" id="4_as6b2"]
-[ext_resource type="Script" path="res://scenes/CamManager.gd" id="4_jmwky"]
-[ext_resource type="Texture2D" uid="uid://cw3ggqlawxmmj" path="res://assets/gradient.png" id="5_s7cmt"]
-[ext_resource type="FontFile" uid="uid://d36jq6ah42c8x" path="res://AmaticSC-Regular.ttf" id="6_mxmqm"]
-[ext_resource type="FontFile" uid="uid://dd4uc8nh0wg3v" path="res://AmaticSC-Bold.ttf" id="7_e44ml"]
-[ext_resource type="Texture2D" uid="uid://ucuxeth8jo3l" path="res://assets/vignette.png" id="8_pmsri"]
-[ext_resource type="PackedScene" uid="uid://t34aheu0tmks" path="res://scenes/dreams/dream_1.tscn" id="9_1spw5"]
-[ext_resource type="PackedScene" uid="uid://d2k53xd1jelaw" path="res://scenes/dreams/dream_6.tscn" id="10_a2plt"]
-[ext_resource type="PackedScene" uid="uid://bc3npig5r30r8" path="res://scenes/dreams/dream_2.tscn" id="10_oeylx"]
-[ext_resource type="AudioStream" uid="uid://igqiwhcy2465" path="res://sfx/jedzonko.mp3" id="11_moy4v"]
-[ext_resource type="AudioStream" uid="uid://cs30wav7lt3pf" path="res://sfx/pozytywka zabawka.mp3" id="11_n1xjr"]
-[ext_resource type="PackedScene" uid="uid://bawpiijdc0jqx" path="res://scenes/dreams/dream_3.tscn" id="11_w621r"]
-[ext_resource type="PackedScene" uid="uid://ttmlusuawhcc" path="res://scenes/dreams/dream_4.tscn" id="12_7ytka"]
-[ext_resource type="AudioStream" uid="uid://bxhq0qrrn8vmb" path="res://sfx/zabawka.mp3" id="13_0f1ml"]
-[ext_resource type="PackedScene" uid="uid://4ghynu1nl1eh" path="res://scenes/dreams/dream_5.tscn" id="13_3gnik"]
-[ext_resource type="PackedScene" uid="uid://c2icmsoh7y32q" path="res://assets/lodka.glb" id="16_wa1fi"]
-[ext_resource type="AudioStream" uid="uid://c3aq4xbgdaqnl" path="res://sfx/kids-voices-with-natural-reverb-7094.mp3" id="17_pmnyo"]
-[ext_resource type="AudioStream" uid="uid://cww4p54ha58s8" path="res://sfx/podloga_skrzyp.mp3" id="19_cjqw4"]
-[ext_resource type="AudioStream" uid="uid://doj0bq2tkrf8b" path="res://sfx/636956__sergequadrado__child-crying.wav" id="21_jbjoy"]
-[ext_resource type="AudioStream" uid="uid://c0mn58khn0ulk" path="res://sfx/menu.mp3" id="27_p7xoc"]
+[ext_resource type="Script" path="res://scenes/Levels/main.gd" id="1_1uxl2"]
+[ext_resource type="Shader" path="res://scenes/tilt_min.gdshader" id="2_alrc6"]
+[ext_resource type="Texture2D" uid="uid://ucuxeth8jo3l" path="res://assets/vignette.png" id="3_8kwte"]
+[ext_resource type="Script" path="res://scenes/Forgor.gd" id="4_nxlny"]
+[ext_resource type="Texture2D" uid="uid://cw3ggqlawxmmj" path="res://assets/gradient.png" id="5_mlpvc"]
+[ext_resource type="FontFile" uid="uid://d36jq6ah42c8x" path="res://AmaticSC-Regular.ttf" id="6_t12kb"]
+[ext_resource type="FontFile" uid="uid://dd4uc8nh0wg3v" path="res://AmaticSC-Bold.ttf" id="7_wnv8y"]
+[ext_resource type="PackedScene" uid="uid://glahq156ruio" path="res://assets/gotowa_mapka.glb" id="8_nrbxk"]
+[ext_resource type="PackedScene" uid="uid://c5gkvpgglwkvl" path="res://assets/morze_lzejsze.glb" id="9_arafk"]
+[ext_resource type="PackedScene" uid="uid://8k7g88vnyxle" path="res://scenes/player/player.tscn" id="10_s62rj"]
+[ext_resource type="PackedScene" uid="uid://df0rmkr0v5din" path="res://scenes/spawner/spawner.tscn" id="11_3cl5k"]
+[ext_resource type="Script" path="res://scenes/CamManager.gd" id="12_m1hqo"]
+[ext_resource type="Script" path="res://scenes/Camera3D.gd" id="13_hljg5"]
+[ext_resource type="PackedScene" uid="uid://t34aheu0tmks" path="res://scenes/dreams/dream_1.tscn" id="14_66aft"]
+[ext_resource type="AudioStream" uid="uid://cs30wav7lt3pf" path="res://sfx/pozytywka zabawka.mp3" id="15_cqb5u"]
+[ext_resource type="PackedScene" uid="uid://bc3npig5r30r8" path="res://scenes/dreams/dream_2.tscn" id="16_pgr2h"]
+[ext_resource type="AudioStream" uid="uid://bxhq0qrrn8vmb" path="res://sfx/zabawka.mp3" id="17_nhte7"]
+[ext_resource type="PackedScene" uid="uid://bawpiijdc0jqx" path="res://scenes/dreams/dream_3.tscn" id="18_ppgdu"]
+[ext_resource type="AudioStream" uid="uid://igqiwhcy2465" path="res://sfx/jedzonko.mp3" id="19_c0ekt"]
+[ext_resource type="PackedScene" uid="uid://ttmlusuawhcc" path="res://scenes/dreams/dream_4.tscn" id="20_2tm6p"]
+[ext_resource type="AudioStream" uid="uid://c3aq4xbgdaqnl" path="res://sfx/kids-voices-with-natural-reverb-7094.mp3" id="21_ohoo7"]
+[ext_resource type="PackedScene" uid="uid://4ghynu1nl1eh" path="res://scenes/dreams/dream_5.tscn" id="22_78o45"]
+[ext_resource type="AudioStream" uid="uid://cww4p54ha58s8" path="res://sfx/podloga_skrzyp.mp3" id="23_10xoe"]
+[ext_resource type="PackedScene" uid="uid://d2k53xd1jelaw" path="res://scenes/dreams/dream_6.tscn" id="24_tncyw"]
+[ext_resource type="AudioStream" uid="uid://doj0bq2tkrf8b" path="res://sfx/636956__sergequadrado__child-crying.wav" id="25_ey3vy"]
+[ext_resource type="PackedScene" uid="uid://c2icmsoh7y32q" path="res://assets/lodka.glb" id="26_asba5"]
+[ext_resource type="AudioStream" uid="uid://c0mn58khn0ulk" path="res://sfx/menu.mp3" id="27_0sw8d"]
+[ext_resource type="PackedScene" uid="uid://c56i3fimoih28" path="res://scenes/Levels/power_ups.tscn" id="28_i03qw"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_anyl1"]
-shader = ExtResource("4_5n10t")
+shader = ExtResource("2_alrc6")
 shader_parameter/limit = 0.24
 shader_parameter/blur = 2.0
 
@@ -121,7 +122,8 @@ _data = {
 }
 
 [node name="Main" type="Node3D"]
-script = ExtResource("1_0se0w")
+script = ExtResource("1_1uxl2")
+dream = 2
 max_enemies = 100
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -152,7 +154,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("8_pmsri")
+texture = ExtResource("3_8kwte")
 expand_mode = 1
 
 [node name="Forgor" type="Control" parent="CanvasLayer/Control"]
@@ -162,7 +164,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("4_as6b2")
+script = ExtResource("4_nxlny")
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/Forgor"]
 layout_mode = 1
@@ -171,7 +173,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("5_s7cmt")
+texture = ExtResource("5_mlpvc")
 expand_mode = 1
 stretch_mode = 4
 
@@ -188,7 +190,7 @@ offset_right = 234.0
 offset_bottom = -114.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("6_mxmqm")
+theme_override_fonts/font = ExtResource("6_t12kb")
 theme_override_font_sizes/font_size = 64
 text = "Your   precious   memories"
 horizontal_alignment = 1
@@ -207,7 +209,7 @@ offset_right = 212.0
 offset_bottom = -188.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("7_e44ml")
+theme_override_fonts/font = ExtResource("7_wnv8y")
 theme_override_font_sizes/font_size = 120
 text = "you  lost"
 horizontal_alignment = 1
@@ -226,7 +228,7 @@ offset_right = -484.0
 offset_bottom = 337.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("6_mxmqm")
+theme_override_fonts/font = ExtResource("6_t12kb")
 theme_override_font_sizes/font_size = 64
 text = "I  want  to
 remember"
@@ -255,7 +257,7 @@ offset_right = 664.0
 offset_bottom = 337.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("6_mxmqm")
+theme_override_fonts/font = ExtResource("6_t12kb")
 theme_override_font_sizes/font_size = 64
 text = "go  back
 to  menu"
@@ -292,10 +294,10 @@ collision_mask = 7
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00186157, 0, -0.00427246)
 shape = SubResource("BoxShape3D_pqyeq")
 
-[node name="gotowa_mapka" parent="." instance=ExtResource("2_vktl4")]
+[node name="gotowa_mapka" parent="." instance=ExtResource("8_nrbxk")]
 transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, 0, 0, 0)
 
-[node name="morze_lzejsze" parent="gotowa_mapka" instance=ExtResource("3_sf172")]
+[node name="morze_lzejsze" parent="gotowa_mapka" instance=ExtResource("9_arafk")]
 transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, -2.36603, 0, -2.09808)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="gotowa_mapka"]
@@ -362,22 +364,22 @@ shape = SubResource("SphereShape3D_ho8c1")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.953693, -0.488012, -4.52523)
 shape = SubResource("SphereShape3D_cnday")
 
-[node name="Player" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("1_kwvwq")]
+[node name="Player" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("10_s62rj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.790185, 0.529, -1.37439)
 camera = NodePath("../CamManager/Camera3D")
 
-[node name="Spawner" parent="Player" instance=ExtResource("2_vtbjc")]
+[node name="Spawner" parent="Player" instance=ExtResource("11_3cl5k")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.51481, -0.235975, -8.82598)
 horizontal = true
 
-[node name="Spawner2" parent="Player" instance=ExtResource("2_vtbjc")]
+[node name="Spawner2" parent="Player" instance=ExtResource("11_3cl5k")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.599962, -0.235975, 3.66073)
 horizontal = true
 
-[node name="Spawner3" parent="Player" instance=ExtResource("2_vtbjc")]
+[node name="Spawner3" parent="Player" instance=ExtResource("11_3cl5k")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.50285, -0.235975, 0.20791)
 
-[node name="Spawner4" parent="Player" instance=ExtResource("2_vtbjc")]
+[node name="Spawner4" parent="Player" instance=ExtResource("11_3cl5k")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.32085, -0.235975, 0.20791)
 
 [node name="AudioListener3D" type="AudioListener3D" parent="Player"]
@@ -385,14 +387,14 @@ current = true
 
 [node name="CamManager" type="Node3D" parent="."]
 process_mode = 3
-script = ExtResource("4_jmwky")
+script = ExtResource("12_m1hqo")
 
 [node name="Camera3D" type="Camera3D" parent="CamManager" node_paths=PackedStringArray("target")]
 process_mode = 3
 transform = Transform3D(1, 0, 0, 0, 0.766044, 0.642788, 0, -0.642788, 0.766044, 0, 2.68406, 3.56547)
 current = true
 fov = 50.0
-script = ExtResource("2_cnx6x")
+script = ExtResource("13_hljg5")
 target = NodePath("../../Player")
 smooth_speed = 5.0
 offset = Vector3(0, 2.6, 3.5)
@@ -406,80 +408,86 @@ directional_shadow_max_distance = 10.0
 
 [node name="Enemies" type="Node3D" parent="."]
 
+[node name="Minions" type="Node3D" parent="."]
+
 [node name="Points" type="Node3D" parent="."]
 
-[node name="Dream1" parent="Points" instance=ExtResource("9_1spw5")]
+[node name="Dream1" parent="Points" instance=ExtResource("14_66aft")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.1154, 0.54844, -3.46094)
 dream = "1"
 power = 40.0
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Points/Dream1"]
-stream = ExtResource("11_n1xjr")
+stream = ExtResource("15_cqb5u")
 volume_db = 18.0
 unit_size = 0.1
 autoplay = true
 
-[node name="Dream2" parent="Points" instance=ExtResource("10_oeylx")]
+[node name="Dream2" parent="Points" instance=ExtResource("16_pgr2h")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.8679, 0, 3.88775)
+collision_layer = 6
 dream = "2"
 power = 40.0
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Points/Dream2"]
-stream = ExtResource("13_0f1ml")
+stream = ExtResource("17_nhte7")
 volume_db = 6.0
 unit_size = 0.1
 autoplay = true
 
-[node name="Dream3" parent="Points" instance=ExtResource("11_w621r")]
+[node name="Dream3" parent="Points" instance=ExtResource("18_ppgdu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.37946, 0, 8.15854)
+collision_layer = 6
 dream = "3"
 power = 40.0
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Points/Dream3"]
-stream = ExtResource("11_moy4v")
+stream = ExtResource("19_c0ekt")
 volume_db = 3.0
 unit_size = 0.1
 autoplay = true
 
-[node name="Dream4" parent="Points" instance=ExtResource("12_7ytka")]
+[node name="Dream4" parent="Points" instance=ExtResource("20_2tm6p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.801217, 0, -7.44104)
+collision_layer = 6
 dream = "4"
 power = 40.0
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Points/Dream4"]
-stream = ExtResource("17_pmnyo")
+stream = ExtResource("21_ohoo7")
 volume_db = 18.0
 unit_size = 0.1
 autoplay = true
 
-[node name="Dream5" parent="Points" instance=ExtResource("13_3gnik")]
+[node name="Dream5" parent="Points" instance=ExtResource("22_78o45")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.13919, 0, -3.19635)
+collision_layer = 6
 dream = "5"
 power = 40.0
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Points/Dream5"]
-stream = ExtResource("19_cjqw4")
+stream = ExtResource("23_10xoe")
 volume_db = 18.0
 unit_size = 0.1
 autoplay = true
 
-[node name="Dream6" parent="Points" instance=ExtResource("10_a2plt")]
+[node name="Dream6" parent="Points" instance=ExtResource("24_tncyw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.99729, 0, 2.21096)
+collision_layer = 6
 dream = "6"
 power = 40.0
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Points/Dream6"]
-stream = ExtResource("21_jbjoy")
+stream = ExtResource("25_ey3vy")
 volume_db = 12.0
 unit_size = 0.1
 autoplay = true
 
-[node name="lodka" parent="." instance=ExtResource("16_wa1fi")]
+[node name="lodka" parent="." instance=ExtResource("26_asba5")]
 transform = Transform3D(0.897958, 0, 0.44008, 0, 1, 0, -0.44008, 0, 0.897958, -11.2924, 0.539442, -14.7545)
 
 [node name="Button" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("27_p7xoc")
-volume_db = 12.0
+stream = ExtResource("27_0sw8d")
 
 [node name="CamTimer" type="Timer" parent="."]
 process_mode = 3
@@ -492,6 +500,8 @@ root_node = NodePath("../CanvasLayer")
 libraries = {
 "": SubResource("AnimationLibrary_67h72")
 }
+
+[node name="PowerUps" parent="." instance=ExtResource("28_i03qw")]
 
 [connection signal="pressed" from="CanvasLayer/Control/Forgor/Label3/RestartButton" to="CanvasLayer/Control/Forgor" method="_on_restart_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Control/Forgor/Label4/MenuButton" to="CanvasLayer/Control/Forgor" method="_on_menu_button_pressed"]

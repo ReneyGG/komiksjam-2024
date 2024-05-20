@@ -3,18 +3,17 @@
 [ext_resource type="Script" path="res://scenes/defence/defence.gd" id="1_mr1hw"]
 [ext_resource type="FontFile" uid="uid://d36jq6ah42c8x" path="res://AmaticSC-Regular.ttf" id="2_e18ey"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_j5foa"]
-size = Vector3(1, 1.93262, 1)
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_qf5ag"]
 
 [node name="Defence" type="StaticBody3D" groups=["obelisk"]]
-collision_layer = 6
-collision_mask = 6
+collision_layer = 22
+collision_mask = 22
 input_ray_pickable = false
 script = ExtResource("1_mr1hw")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.108643, 0)
-shape = SubResource("BoxShape3D_j5foa")
+shape = SubResource("CapsuleShape3D_qf5ag")
 
 [node name="Label3D" type="Label3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)

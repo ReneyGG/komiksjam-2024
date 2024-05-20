@@ -13,7 +13,7 @@ func _process(delta):
 
 func _on_restart_button_pressed():
 	$"../../../Button".play()
-	Fade.fade("res://scenes/main.tscn")
+	Fade.fade("res://scenes/Levels/main"+str($"../../..".dream)+".tscn")
 
 func _on_menu_button_pressed():
 	$"../../../Button".play()

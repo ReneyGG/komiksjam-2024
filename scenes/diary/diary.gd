@@ -1,24 +1,22 @@
 extends CanvasLayer
 signal spawn_boss
 
-var av := false
-var dreams := 0
-var boss_flag := false
 @export var b_flag = false
+
+var av := false
+var dreams_progress := 1
+var boss_flag := false
+var next_level := false
 
 func _ready():
 	$TextureRect/OutButton.disabled = true
 	$TextureRect.position.y = 1084
 	$TextureRect/Closeup.hide()
 	$TextureRect/Darken.hide()
-	dreams = 0
-
-func _process(delta):
-	pass
 
 func reset():
 	av = false
-	dreams = 0
+	dreams_progress = 1
 	boss_flag = false
 	b_flag = false
 	$TextureRect.position.y = 1084
@@ -34,25 +32,31 @@ func _input(event):
 		if get_tree().paused:
 			close_diary()
 		else:
-			opeen_diary()
+			open_diary()
 
 func get_dream(dream):
-	get_node("TextureRect/Pic"+dream).visible = true
-
-	dreams += 1
+	next_level = true
+	dreams_progress = dream
+	get_node("TextureRect/Pic"+str(dream)).visible = true
 	Sfx.play_sound("dziennik")
-	opeen_diary()
-	if dreams == 6 and not boss_flag:
-		boss_flag = true
-		print("boss")
-		emit_signal("spawn_boss")
+	open_diary()
+	#if dreams == 6 and not boss_flag:
+		#boss_flag = true
+		#print("boss")
+		#emit_signal("spawn_boss")
 
-func opeen_diary():
+func open_diary():
 	$TextureRect/Closeup.hide()
 	$TextureRect/Darken.hide()
 	$AnimationPlayer.play("open_diary")
 
 func close_diary():
+	if next_level:
+		next_level = false
+		if dreams_progress == 6:
+			Fade.fade("res://scenes/menu/menu.tscn")
+		else:
+			Fade.fade("res://scenes/Levels/main"+str(dreams_progress+1)+".tscn")
 	$TextureRect/Closeup.hide()
 	$TextureRect/Darken.hide()
 	$AnimationPlayer.play("close_diary")

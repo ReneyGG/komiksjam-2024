@@ -1,11 +1,12 @@
 extends Control
 
 func _ready():
-	Diary.av = false
+	Diary.reset()
+	GlobalTheme.play()
 
 func _on_start_button_pressed():
 	$Button.play()
-	Fade.fade("res://scenes/main.tscn")
+	Fade.fade("res://scenes/Levels/main1.tscn")
 
 func _on_tutorial_button_pressed():
 	$Button.play()
