@@ -28,7 +28,7 @@ func reset():
 	$TextureRect/Pic6.hide()
 
 func _input(event):
-	if Input.is_action_just_pressed("pause") and av:
+	if Input.is_action_just_pressed("diary") and av:
 		if get_tree().paused:
 			close_diary()
 		else:

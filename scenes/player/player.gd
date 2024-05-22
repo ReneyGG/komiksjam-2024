@@ -39,6 +39,13 @@ func _physics_process(delta):
 	else:
 		camera.fov = lerp(camera.fov, 50.0, 0.2)
 	
+	if Input.is_action_just_pressed("dash"):
+		speed = 100
+		camera.fov = lerp(camera.fov, 40.0, 0.1)
+	else:
+		speed = 3
+		camera.fov = lerp(camera.fov, 50.0, 0.1)
+	
 	var direction = get_input_mov()
 	if direction.length() > 0:
 		#var target_position = direction + global_position
@@ -78,7 +85,7 @@ func knockback(source, power):
 	velocity -= point * power
 
 func hit(source):
-	knockback(source, 12)
+	knockback(source, 10)
 	hp -= 1
 	$Hit.play()
 	get_parent().get_node("AnimationPlayer").play("get_hit")
@@ -164,4 +171,4 @@ func _on_area_3d_body_exited(body):
 		target_dream = null
 
 func _on_knockback_area_body_entered(body):
-	knockback(body, 4)
+	knockback(body, 2)
