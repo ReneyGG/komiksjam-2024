@@ -1,21 +1,22 @@
 extends Node3D
 
-@export var period = 0.3
-@export var magnitude = 0.05
+@export var target: Node3D
+@export var smooth_speed: float
+@export var offset: Vector3
 
-func shake():
-	var initial_transform = self.transform 
-	var elapsed_time = 0.0
+var fly := false
+var target_fly
+
+func _physics_process(delta: float) -> void:
+	if fly:
+		return
+	if(target != null):
+		global_position = lerp(self.global_position, target.global_position + offset, smooth_speed * delta)
 	
-	while elapsed_time < period:
-		var offset = Vector3(
-			randf_range(-magnitude, magnitude),
-			randf_range(-magnitude, magnitude),
-			0.0
-		)
-	
-		self.transform.origin = initial_transform.origin + offset
-		elapsed_time += get_process_delta_time()
-		await get_tree().process_frame
-	
-	self.transform = initial_transform
+	rotation_degrees.x = $"../CanvasLayer/Control/VSlider".value
+
+func pan_lose(pos):
+	fly = true
+	$"../CamTimer".start(0.5)
+	await $"../CamTimer".timeout
+	$"../CanvasLayer/Control/Forgor".show()

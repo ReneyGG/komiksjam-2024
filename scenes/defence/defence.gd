@@ -7,6 +7,7 @@ var attack = false
 @export var power = 0.0
 
 func _ready():
+	power = 0.0
 	$Label3D.text = "0%"
 
 func _physics_process(delta):
@@ -23,10 +24,10 @@ func _physics_process(delta):
 	
 	$Label3D.text = str(int(power))+"%"
 
-func heal():
+func heal(i):
 	if power < 100.0:
-		power += 0.4
+		power += i
 
 func hit():
 	if power > 0.0:
-		power -= 0.01
+		power -= 0.04

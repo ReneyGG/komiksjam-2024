@@ -3,12 +3,14 @@ extends CharacterBody3D
 @onready var navigationAgent : NavigationAgent3D = $NavigationAgent3D
 
 @export var camera : Node
+@export var power := 2
 
 var speed = 3
-var friction = 0.15
-var acceleration = 0.1
+var friction = 0.02
+var acceleration = 0.06
 var rotate_speed = 1000
 var projectile = preload("res://scenes/boom/boom.tscn")
+var minion = preload("res://scenes/minion/minion.tscn")
 var stop_move = false
 var hp = 10
 var dead := false
@@ -19,6 +21,8 @@ func _ready():
 	$maincharacter_wysrodkowany/AnimationPlayer.play("ArmatureAction")
 
 func _physics_process(delta):
+	$CanvasLayer/Control/TextureRect/Label.text = str(power)
+	
 	if dead:
 		return
 	#if stop_move:
@@ -29,12 +33,18 @@ func _physics_process(delta):
 	if Input.is_action_pressed("space"):
 		if target_dream:
 			if target_dream.power < 100:
-				target_dream.heal()
+				target_dream.heal(0.4)
 				if camera.fov > 30:
-					camera.fov -= 0.02
+					camera.fov -= 0.04
 	else:
-		pass
 		camera.fov = lerp(camera.fov, 50.0, 0.2)
+	
+	if Input.is_action_just_pressed("dash"):
+		speed = 100
+		camera.fov = lerp(camera.fov, 40.0, 0.1)
+	else:
+		speed = 3
+		camera.fov = lerp(camera.fov, 50.0, 0.1)
 	
 	var direction = get_input_mov()
 	if direction.length() > 0:
@@ -65,11 +75,17 @@ func moveToPoint(delta, speed):
 func faceDirection(direction):
 	$maincharacter_wysrodkowany.look_at(Vector3(direction.x, global_position.y, direction.z), Vector3.UP)
 
-func hit(source):
+func get_power(amount):
+	power += amount
+
+func knockback(source, power):
 	var point = source.global_position - self.global_position
 	point = point.normalized()
 	point.y = 0
-	velocity -= point * 12
+	velocity -= point * power
+
+func hit(source):
+	knockback(source, 10)
 	hp -= 1
 	$Hit.play()
 	get_parent().get_node("AnimationPlayer").play("get_hit")
@@ -99,23 +115,8 @@ func _input(event):
 	if dead:
 		return
 	
-	#if Input.is_action_pressed("left_mouse"):
-		#var mousePos = get_viewport().get_mouse_position()
-		#var rayLength = 1000
-		#var from = camera.project_ray_origin(mousePos)
-		#var to = from + camera.project_ray_normal(mousePos) * rayLength
-		#var space = get_world_3d().direct_space_state
-		#var rayQuery = PhysicsRayQueryParameters3D.new()
-		#rayQuery.from = from
-		#rayQuery.to = to
-		#rayQuery.collide_with_areas = true
-		#var result = space.intersect_ray(rayQuery)
-		#
-		#if result.get("position"):
-			#navigationAgent.target_position = result.position
-	
-	if Input.is_action_just_pressed("right_mouse") and not Input.is_action_pressed("space"):
-		if not $Cooldown.get_time_left() > 0:
+	if Input.is_action_just_pressed("left_mouse") and not Input.is_action_pressed("space"):
+		if not $Cooldown.get_time_left() > 0 and power > 0:
 			var mousePos = get_viewport().get_mouse_position()
 			var rayLength = 1000
 			var from = camera.project_ray_origin(mousePos)
@@ -129,6 +130,29 @@ func _input(event):
 			var result = space.intersect_ray(rayQuery)
 			
 			if result.get("position"):
+				power -= 1
+				stop_move = true
+				$Cooldown.start()
+				var init = minion.instantiate()
+				get_parent().get_node("Minions").add_child(init)
+				init.global_position = result.position
+	
+	if Input.is_action_just_pressed("right_mouse") and not Input.is_action_pressed("space"):
+		if not $Cooldown.get_time_left() > 0 and power > 0:
+			var mousePos = get_viewport().get_mouse_position()
+			var rayLength = 1000
+			var from = camera.project_ray_origin(mousePos)
+			var to = from + camera.project_ray_normal(mousePos) * rayLength
+			var space = get_world_3d().direct_space_state
+			var rayQuery = PhysicsRayQueryParameters3D.new()
+			rayQuery.from = from
+			rayQuery.to = to
+			rayQuery.collide_with_areas = true
+			rayQuery.collision_mask = 1
+			var result = space.intersect_ray(rayQuery)
+			
+			if result.get("position"):
+				power -= 1
 				stop_move = true
 				$Cooldown.start()
 				var init = projectile.instantiate()
@@ -145,3 +169,6 @@ func _on_area_3d_body_entered(body):
 func _on_area_3d_body_exited(body):
 	if body.is_in_group("obelisk"):
 		target_dream = null
+
+func _on_knockback_area_body_entered(body):
+	knockback(body, 2)

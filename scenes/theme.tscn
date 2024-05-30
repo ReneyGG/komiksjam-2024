@@ -2,8 +2,7 @@
 
 [ext_resource type="AudioStream" uid="uid://ben7ej80ctr34" path="res://sfx/668879__zhr__retroclassic-game-music.wav" id="1_rvfr2"]
 
-[node name="Theme" type="AudioStreamPlayer"]
+[node name="ThemeSong" type="AudioStreamPlayer"]
 process_mode = 3
 stream = ExtResource("1_rvfr2")
 volume_db = -15.0
-autoplay = true

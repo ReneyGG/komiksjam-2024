@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://c56i3fimoih28"]
+
+[ext_resource type="Script" path="res://scenes/Levels/PowerUps.gd" id="1_eb2h3"]
+
+[node name="PowerUps" type="Node3D"]
+script = ExtResource("1_eb2h3")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

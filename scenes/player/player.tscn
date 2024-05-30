@@ -1,12 +1,18 @@
-[gd_scene load_steps=9 format=3 uid="uid://8k7g88vnyxle"]
+[gd_scene load_steps=12 format=3 uid="uid://8k7g88vnyxle"]
 
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_xcyma"]
 [ext_resource type="PackedScene" uid="uid://tth21oiigqb" path="res://scenes/player/maincharacter_wysrodkowany.tscn" id="2_d18ml"]
 [ext_resource type="AudioStream" uid="uid://w5e7kbrlb5rv" path="res://sfx/impactSoft_heavy_000.ogg" id="3_j462y"]
+[ext_resource type="Texture2D" uid="uid://ciqvdm3svyb28" path="res://assets/power_indicator.png" id="4_3qjh5"]
+[ext_resource type="FontFile" uid="uid://dd4uc8nh0wg3v" path="res://AmaticSC-Bold.ttf" id="5_cqrol"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vxki8"]
-radius = 0.128063
-height = 0.551999
+radius = 0.169794
+height = 0.654155
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_y28ae"]
+radius = 0.207778
+height = 0.944606
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_d1b66"]
 radius = 1.27363
@@ -49,6 +55,14 @@ one_shot = true
 
 [node name="maincharacter_wysrodkowany" parent="." instance=ExtResource("2_d18ml")]
 
+[node name="KnockbackArea" type="Area3D" parent="."]
+collision_layer = 16
+collision_mask = 16
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="KnockbackArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, -0.115, -0.053)
+shape = SubResource("CapsuleShape3D_y28ae")
+
 [node name="Area3D" type="Area3D" parent="."]
 collision_layer = 0
 collision_mask = 2
@@ -71,7 +85,43 @@ explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_tfsal")
 draw_pass_1 = SubResource("SphereMesh_2rqhq")
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control"]
+modulate = Color(1, 1, 1, 0.784314)
+layout_mode = 0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 177.0
+offset_bottom = 177.0
+texture = ExtResource("4_3qjh5")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/TextureRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("5_cqrol")
+theme_override_font_sizes/font_size = 96
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [connection signal="timeout" from="Cooldown" to="." method="_on_cooldown_timeout"]
+[connection signal="body_entered" from="KnockbackArea" to="." method="_on_knockback_area_body_entered"]
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]
 
