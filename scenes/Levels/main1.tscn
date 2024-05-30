@@ -274,6 +274,7 @@ grow_vertical = 2
 mouse_default_cursor_shape = 2
 
 [node name="VSlider" type="VSlider" parent="CanvasLayer/Control"]
+visible = false
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
