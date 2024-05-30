@@ -50,6 +50,7 @@ shape = SubResource("SphereShape3D_kf1cp")
 
 [node name="test_animprzeciwnika6" parent="." instance=ExtResource("2_2xdt5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.83627)
+visible = false
 
 [node name="Skeleton3D" parent="test_animprzeciwnika6/Armature_001" index="0"]
 bones/0/position = Vector3(0.333463, -0.593035, -0.271419)
