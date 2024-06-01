@@ -4,7 +4,4 @@
 
 [node name="Basic" instance=ExtResource("1_f0aji")]
 
-[node name="test_animprzeciwnika6" parent="." index="2"]
-visible = true
-
 [editable path="test_animprzeciwnika6"]

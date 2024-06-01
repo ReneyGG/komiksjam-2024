@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://ihgdr5ccwd6n" path="res://assets/ui/hp.serce.png" id="7_ovcyi"]
 [ext_resource type="Texture2D" uid="uid://dfgtervdd1q1o" path="res://assets/ui/hp.tlo.png" id="8_12208"]
 [ext_resource type="Texture2D" uid="uid://xfs3d2t5eiwm" path="res://assets/ui/hp.ramka.png" id="8_dnmcy"]
-[ext_resource type="Texture2D" uid="uid://cf8jf7e5ws386" path="res://assets/ui/hp.poczatekpaska.png" id="10_xghxu"]
+[ext_resource type="Texture2D" uid="uid://c1pvu71ldymiq" path="res://assets/ui/hp.poczatekpaskacrop.png" id="11_8usm1"]
 [ext_resource type="Texture2D" uid="uid://b3q0si0oegw60" path="res://assets/ui/hp.pasek.png" id="11_sgxlf"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vxki8"]
@@ -174,12 +174,30 @@ value = 50.0
 nine_patch_stretch = true
 texture_under = ExtResource("8_12208")
 texture_over = ExtResource("8_dnmcy")
-texture_progress = ExtResource("10_xghxu")
 
-[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/Control/Health/TextureProgressBar"]
-position = Vector2(54.5, 36)
-scale = Vector2(0.030303, 0.0742312)
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/Health/TextureProgressBar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("11_sgxlf")
+expand_mode = 1
+
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/Control/Health/TextureProgressBar/TextureRect"]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_right = 4.0
+grow_horizontal = 0
+grow_vertical = 2
+texture = ExtResource("11_8usm1")
+expand_mode = 1
+stretch_mode = 4
 
 [connection signal="timeout" from="Cooldown" to="." method="_on_cooldown_timeout"]
 [connection signal="body_entered" from="KnockbackArea" to="." method="_on_knockback_area_body_entered"]

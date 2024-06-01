@@ -22,6 +22,7 @@ func _ready():
 
 func _physics_process(delta):
 	$CanvasLayer/Control/TextureRect/Label.text = str(power)
+	$CanvasLayer/Control/Health/TextureProgressBar/TextureRect.size.x = (144*hp)/5
 	
 	if dead:
 		return
