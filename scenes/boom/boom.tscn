@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://d2lqw8d0tnle4"]
+[gd_scene load_steps=23 format=3 uid="uid://d2lqw8d0tnle4"]
 
 [ext_resource type="Script" path="res://scenes/boom/boom.gd" id="1_xiaqb"]
 [ext_resource type="Texture2D" uid="uid://bjf66rdawbmhl" path="res://assets/boom/wybuch_test1-1.png" id="2_pohwu"]
@@ -96,6 +96,14 @@ _data = {
 "start": SubResource("Animation_hd16l")
 }
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_equvs"]
+cull_mode = 2
+shading_mode = 0
+albedo_color = Color(1, 0.121569, 0.113725, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_ecnyg"]
+material = SubResource("StandardMaterial3D_equvs")
+
 [node name="Boom" type="Node3D"]
 script = ExtResource("1_xiaqb")
 
@@ -108,6 +116,7 @@ shape = SubResource("SphereShape3D_p1slh")
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0.399483, 0)
+visible = false
 billboard = 1
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_t6rpf")
@@ -118,3 +127,7 @@ frame_progress = 1.0
 libraries = {
 "": SubResource("AnimationLibrary_2s8jx")
 }
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+mesh = SubResource("SphereMesh_ecnyg")

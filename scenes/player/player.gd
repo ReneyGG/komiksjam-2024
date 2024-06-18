@@ -42,7 +42,7 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("dash"):
 		speed = 100
 		camera.fov = lerp(camera.fov, 40.0, 0.1)
-	else:
+	elif not Input.is_action_pressed("space"):
 		speed = 3
 		camera.fov = lerp(camera.fov, 50.0, 0.1)
 	
@@ -157,7 +157,8 @@ func _input(event):
 				$Cooldown.start()
 				var init = projectile.instantiate()
 				get_parent().get_node("Projectiles").add_child(init)
-				init.global_position = result.position
+				init.global_position = self.global_position
+				init.end_pos = result.position
 
 func _on_cooldown_timeout():
 	stop_move = false

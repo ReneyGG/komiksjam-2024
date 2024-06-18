@@ -69,15 +69,19 @@ func unpause():
 
 func _on_menu_button_pressed():
 	if not b_flag:
-		$Button.play()
 		b_flag = true
 		close_diary()
-		Fade.fade("res://scenes/menu/menu.tscn")
+	#if not b_flag:
+		#$Button.play()
+		#b_flag = true
+		#close_diary()
+		#Fade.fade("res://scenes/menu/menu.tscn")
 
 func _on_out_button_pressed():
-	if not b_flag:
-		b_flag = true
-		close_diary()
+	pass
+	#if not b_flag:
+		#b_flag = true
+		#close_diary()
 
 func _on__pressed():
 	$TextureRect/Closeup.texture = load("res://assets/pics/1_zabawka.png")

@@ -5,7 +5,7 @@ signal spawned
 
 @export var horizontal := false
 
-var mob = preload("res://scenes/enemy/enemy.tscn")
+var mob = preload("res://scenes/enemy/enemy_shoot.tscn")
 
 func _ready():
 	randomize()

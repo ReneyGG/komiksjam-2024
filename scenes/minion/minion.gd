@@ -2,7 +2,7 @@ extends CharacterBody3D
 
 @onready var player = get_parent().get_parent().get_node("Player")
 
-var speed = 2.0
+var speed = 0
 var friction = 0.15
 var acceleration = 0.1
 var target = null

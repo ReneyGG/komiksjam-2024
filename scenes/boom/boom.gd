@@ -2,12 +2,32 @@ extends Node3D
 
 @onready var scene_camera = get_parent().get_parent().get_node("CamManager/CamShaker")
 
-func _ready():
-	$AnimatedSprite3D.play("default")
-	$AnimationPlayer.play("start")
+@export var end_pos : Vector3
+var start_pos : Vector3
+var height_pos : Vector3
+var height = 4.0
+var count = 0.0
+var flag := false
 
-func _process(delta):
-	pass
+func _ready():
+	await get_tree().physics_frame
+	start_pos = global_position
+	height_pos = start_pos + (end_pos - start_pos)/2 + Vector3.UP * height
+	#$AnimatedSprite3D.play("default")
+	#$AnimationPlayer.play("start")
+
+func _physics_process(delta):
+	if flag:
+		return
+	if count < 1.0:
+		count += 1.0 * delta
+		var m1 = lerp(start_pos, height_pos, count)
+		var m2 = lerp(height_pos, end_pos, count)
+		global_position = lerp(m1, m2, count)
+	else:
+		explode()
+		flag = true
+		return
 
 func explode():
 	Sfx.play_sound("boom")

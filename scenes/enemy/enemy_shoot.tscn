@@ -1,0 +1,94 @@
+[gd_scene load_steps=10 format=3 uid="uid://cbdyw0iohtlkv"]
+
+[ext_resource type="Script" path="res://scenes/enemy/enemy_shoot.gd" id="1_j4kvp"]
+[ext_resource type="PackedScene" uid="uid://dx10p3cnaj3ex" path="res://assets/przeciwnik_strzelajacy_.glb" id="2_t3jep"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_wowxq"]
+height = 1.80295
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_kf1cp"]
+radius = 0.781809
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_rylc6"]
+lifetime_randomness = 0.5
+direction = Vector3(0, 1, 0)
+spread = 180.0
+initial_velocity_min = 12.0
+initial_velocity_max = 12.0
+scale_min = 0.1
+scale_max = 0.3
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cecky"]
+cull_mode = 2
+shading_mode = 0
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_kf6m3"]
+material = SubResource("StandardMaterial3D_cecky")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7fjs7"]
+cull_mode = 2
+shading_mode = 0
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2ohxr"]
+cull_mode = 2
+shading_mode = 0
+albedo_color = Color(0, 0, 0, 1)
+
+[node name="EnemyShoot" type="CharacterBody3D" groups=["enemy"]]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+collision_layer = 6
+collision_mask = 6
+input_ray_pickable = false
+axis_lock_linear_y = true
+script = ExtResource("1_j4kvp")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_wowxq")
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 6
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_kf1cp")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+emitting = false
+amount = 20
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_rylc6")
+draw_pass_1 = SubResource("SphereMesh_kf6m3")
+
+[node name="przeciwnik_strzelajacy_" parent="." instance=ExtResource("2_t3jep")]
+
+[node name="Skeleton3D" parent="przeciwnik_strzelajacy_/Armature_001" index="0"]
+bones/0/position = Vector3(-0.0630974, -0.166117, -0.0631001)
+bones/1/rotation = Quaternion(-0.00213159, 0.880938, 0.473224, 0.00135755)
+bones/3/rotation = Quaternion(-0.500173, -0.0274359, -0.0496751, 0.864064)
+bones/5/rotation = Quaternion(-0.0268675, 0.396506, 0.915915, 0.056223)
+bones/7/rotation = Quaternion(0.922071, 0.00252331, 0.00106865, -0.387012)
+bones/9/rotation = Quaternion(0.482728, 0.807963, 0.144137, -0.305606)
+bones/11/rotation = Quaternion(-0.135143, 0.259873, 0.484843, 0.824093)
+bones/13/rotation = Quaternion(0.233907, 0.0200369, 0.86626, -0.440998)
+bones/15/rotation = Quaternion(0.910083, -0.375843, -0.150796, -0.0880477)
+
+[node name="Cube" parent="przeciwnik_strzelajacy_/Armature_001/Skeleton3D" index="0"]
+transform = Transform3D(1.33693, 4.06919e-17, -2.80215e-18, -4.06919e-17, 1.32431, -0.18326, -2.80214e-18, 0.18326, 1.32431, -0.0630974, 1.04801, 0.419687)
+
+[node name="Cube" parent="przeciwnik_strzelajacy_/Armature_001/Skeleton3D/Cube" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_7fjs7")
+
+[node name="Sphere" parent="przeciwnik_strzelajacy_/Armature_001/Skeleton3D" index="1"]
+surface_material_override/0 = SubResource("StandardMaterial3D_2ohxr")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]
+
+[editable path="przeciwnik_strzelajacy_"]
