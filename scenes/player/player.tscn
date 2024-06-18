@@ -1,10 +1,16 @@
-[gd_scene load_steps=12 format=3 uid="uid://8k7g88vnyxle"]
+[gd_scene load_steps=18 format=3 uid="uid://8k7g88vnyxle"]
 
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_xcyma"]
 [ext_resource type="PackedScene" uid="uid://tth21oiigqb" path="res://scenes/player/maincharacter_wysrodkowany.tscn" id="2_d18ml"]
 [ext_resource type="AudioStream" uid="uid://w5e7kbrlb5rv" path="res://sfx/impactSoft_heavy_000.ogg" id="3_j462y"]
-[ext_resource type="Texture2D" uid="uid://ciqvdm3svyb28" path="res://assets/power_indicator.png" id="4_3qjh5"]
+[ext_resource type="Texture2D" uid="uid://bxnqwqosh2m47" path="res://assets/ui/counter.png" id="4_2e43u"]
 [ext_resource type="FontFile" uid="uid://dd4uc8nh0wg3v" path="res://AmaticSC-Bold.ttf" id="5_cqrol"]
+[ext_resource type="Texture2D" uid="uid://cdex0nsd0l2pr" path="res://assets/ui/Untitled_Artwork5.png" id="6_l5ldk"]
+[ext_resource type="Texture2D" uid="uid://ihgdr5ccwd6n" path="res://assets/ui/hp.serce.png" id="7_ovcyi"]
+[ext_resource type="Texture2D" uid="uid://dfgtervdd1q1o" path="res://assets/ui/hp.tlo.png" id="8_12208"]
+[ext_resource type="Texture2D" uid="uid://xfs3d2t5eiwm" path="res://assets/ui/hp.ramka.png" id="8_dnmcy"]
+[ext_resource type="Texture2D" uid="uid://c1pvu71ldymiq" path="res://assets/ui/hp.poczatekpaskacrop.png" id="11_8usm1"]
+[ext_resource type="Texture2D" uid="uid://b3q0si0oegw60" path="res://assets/ui/hp.pasek.png" id="11_sgxlf"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vxki8"]
 radius = 0.169794
@@ -97,13 +103,16 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control"]
-modulate = Color(1, 1, 1, 0.784314)
-layout_mode = 0
-offset_left = 20.0
-offset_top = 20.0
-offset_right = 177.0
-offset_bottom = 177.0
-texture = ExtResource("4_3qjh5")
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -154.0
+offset_top = 80.0
+offset_right = -80.0
+offset_bottom = 154.0
+grow_horizontal = 0
+texture = ExtResource("4_2e43u")
 expand_mode = 1
 stretch_mode = 5
 
@@ -115,10 +124,80 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("5_cqrol")
-theme_override_font_sizes/font_size = 96
+theme_override_font_sizes/font_size = 72
 text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_left = 80.0
+offset_top = 80.0
+offset_right = 134.0
+offset_bottom = 144.0
+texture = ExtResource("6_l5ldk")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Health" type="Control" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 192.0
+grow_horizontal = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/Health"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 375.0
+offset_top = 96.0
+offset_right = 408.0
+offset_bottom = 133.0
+grow_horizontal = 2
+texture = ExtResource("7_ovcyi")
+expand_mode = 1
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="CanvasLayer/Control/Health"]
+clip_children = 2
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 432.0
+offset_top = 80.0
+offset_right = 720.0
+offset_bottom = 152.0
+grow_horizontal = 2
+value = 50.0
+nine_patch_stretch = true
+texture_under = ExtResource("8_12208")
+texture_over = ExtResource("8_dnmcy")
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/Health/TextureProgressBar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("11_sgxlf")
+expand_mode = 1
+
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/Control/Health/TextureProgressBar/TextureRect"]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_right = 4.0
+grow_horizontal = 0
+grow_vertical = 2
+texture = ExtResource("11_8usm1")
+expand_mode = 1
+stretch_mode = 4
 
 [connection signal="timeout" from="Cooldown" to="." method="_on_cooldown_timeout"]
 [connection signal="body_entered" from="KnockbackArea" to="." method="_on_knockback_area_body_entered"]

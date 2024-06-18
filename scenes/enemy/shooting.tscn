@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://dx27wnf1irfgk"]
+
+[ext_resource type="PackedScene" uid="uid://c6jho4b3fpslj" path="res://scenes/enemy/enemy.tscn" id="1_3f3ko"]
+[ext_resource type="Texture2D" uid="uid://uigo0bu44ul4" path="res://assets/monsters.jpg" id="2_0ip70"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kom80"]
+atlas = ExtResource("2_0ip70")
+region = Rect2(754.318, 86.9652, 635.316, 740.714)
+
+[node name="Shooting" instance=ExtResource("1_3f3ko")]
+
+[node name="Sprite3D" type="Sprite3D" parent="." index="5"]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+texture = SubResource("AtlasTexture_kom80")
+
+[editable path="test_animprzeciwnika6"]

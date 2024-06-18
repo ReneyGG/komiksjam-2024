@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://f5qxrbh8nhy"]
+
+[ext_resource type="PackedScene" uid="uid://c6jho4b3fpslj" path="res://scenes/enemy/enemy.tscn" id="1_f0aji"]
+
+[node name="Basic" instance=ExtResource("1_f0aji")]
+
+[editable path="test_animprzeciwnika6"]
