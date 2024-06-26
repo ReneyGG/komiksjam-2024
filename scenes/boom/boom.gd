@@ -10,6 +10,7 @@ var count = 0.0
 var flag := false
 
 func _ready():
+	randomize()
 	await get_tree().physics_frame
 	start_pos = global_position
 	height_pos = start_pos + (end_pos - start_pos)/2 + Vector3.UP * height
@@ -30,9 +31,13 @@ func _physics_process(delta):
 		return
 
 func explode():
-	Sfx.play_sound("boom")
+	$Boom.pitch_scale = randf_range(0.9,1.3)
+	$Boom.play()
 	scene_camera.shake()
-	FrameFreeze.frame_freeze(0.1,0.15)
+	#FrameFreeze.frame_freeze(0.1,0.1)
 	for i in $Area3D.get_overlapping_bodies():
-		i.hit()
+		i.hit(2)
+	$MeshInstance3D.hide()
+	$GPUParticles3D.restart()
+	await $GPUParticles3D.finished
 	queue_free()

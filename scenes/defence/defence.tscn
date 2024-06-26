@@ -6,7 +6,7 @@
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_qf5ag"]
 
 [node name="Defence" type="StaticBody3D" groups=["obelisk"]]
-collision_layer = 22
+collision_layer = 30
 collision_mask = 22
 input_ray_pickable = false
 script = ExtResource("1_mr1hw")

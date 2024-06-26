@@ -13,7 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://b3q0si0oegw60" path="res://assets/ui/hp.pasek.png" id="11_sgxlf"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vxki8"]
-radius = 0.169794
+radius = 0.144996
 height = 0.654155
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_y28ae"]
@@ -41,8 +41,8 @@ albedo_color = Color(1, 0.121569, 0.113725, 1)
 material = SubResource("StandardMaterial3D_hewst")
 
 [node name="Player" type="CharacterBody3D" groups=["player"]]
-collision_layer = 2
-collision_mask = 2
+collision_layer = 42
+collision_mask = 42
 input_ray_pickable = false
 script = ExtResource("1_xcyma")
 
@@ -60,6 +60,13 @@ wait_time = 0.4
 one_shot = true
 
 [node name="maincharacter_wysrodkowany" parent="." instance=ExtResource("2_d18ml")]
+
+[node name="Skeleton3D" parent="maincharacter_wysrodkowany/Armature" index="0"]
+bones/0/position = Vector3(-3.50519e-06, -0.0100317, -0.270856)
+bones/1/rotation = Quaternion(-0.489636, 1.03942e-07, 5.83692e-08, 0.871927)
+bones/3/rotation = Quaternion(3.07121e-07, 0.209703, 0.977765, 1.49593e-08)
+bones/4/rotation = Quaternion(0.145229, 4.08352e-10, -5.95167e-08, 0.989398)
+bones/4/scale = Vector3(0.999984, 0.999989, 0.999996)
 
 [node name="KnockbackArea" type="Area3D" parent="."]
 collision_layer = 16
@@ -108,9 +115,9 @@ anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -154.0
-offset_top = 80.0
+offset_top = 39.0
 offset_right = -80.0
-offset_bottom = 154.0
+offset_bottom = 113.0
 grow_horizontal = 0
 texture = ExtResource("4_2e43u")
 expand_mode = 1
@@ -132,9 +139,9 @@ vertical_alignment = 1
 [node name="TextureRect2" type="TextureRect" parent="CanvasLayer/Control"]
 layout_mode = 0
 offset_left = 80.0
-offset_top = 80.0
+offset_top = 39.0
 offset_right = 134.0
-offset_bottom = 144.0
+offset_bottom = 103.0
 texture = ExtResource("6_l5ldk")
 expand_mode = 1
 stretch_mode = 5
@@ -143,7 +150,8 @@ stretch_mode = 5
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_bottom = 192.0
+offset_top = -41.0
+offset_bottom = 151.0
 grow_horizontal = 2
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/Health"]
@@ -170,6 +178,7 @@ offset_top = 80.0
 offset_right = 720.0
 offset_bottom = 152.0
 grow_horizontal = 2
+step = 0.1
 value = 50.0
 nine_patch_stretch = true
 texture_under = ExtResource("8_12208")
@@ -198,6 +207,9 @@ grow_vertical = 2
 texture = ExtResource("11_8usm1")
 expand_mode = 1
 stretch_mode = 4
+
+[node name="DashCooldown" type="Timer" parent="."]
+one_shot = true
 
 [connection signal="timeout" from="Cooldown" to="." method="_on_cooldown_timeout"]
 [connection signal="body_entered" from="KnockbackArea" to="." method="_on_knockback_area_body_entered"]

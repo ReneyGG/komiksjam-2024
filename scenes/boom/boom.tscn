@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://d2lqw8d0tnle4"]
+[gd_scene load_steps=27 format=3 uid="uid://d2lqw8d0tnle4"]
 
 [ext_resource type="Script" path="res://scenes/boom/boom.gd" id="1_xiaqb"]
 [ext_resource type="Texture2D" uid="uid://bjf66rdawbmhl" path="res://assets/boom/wybuch_test1-1.png" id="2_pohwu"]
@@ -16,9 +16,10 @@
 [ext_resource type="Texture2D" uid="uid://df1ygh8x5act6" path="res://assets/boom/wybuch_test1-13.png" id="14_xgvi7"]
 [ext_resource type="Texture2D" uid="uid://b4xnmr8vspb1x" path="res://assets/boom/wybuch_test1-14.png" id="15_v74wn"]
 [ext_resource type="Texture2D" uid="uid://cwhhy53ku5ghc" path="res://assets/boom/wybuch_test1-15.png" id="16_peey6"]
+[ext_resource type="AudioStream" uid="uid://cra7yk23bcgso" path="res://sfx/mixkit-cartoon-blood-and-gore-hit-726.wav" id="17_fg5qw"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_p1slh"]
-radius = 1.04747
+radius = 1.53304
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_t6rpf"]
 animations = [{
@@ -104,6 +105,23 @@ albedo_color = Color(1, 0.121569, 0.113725, 1)
 [sub_resource type="SphereMesh" id="SphereMesh_ecnyg"]
 material = SubResource("StandardMaterial3D_equvs")
 
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_hx1r8"]
+lifetime_randomness = 0.5
+direction = Vector3(0, 1, 0)
+spread = 180.0
+initial_velocity_min = 12.0
+initial_velocity_max = 12.0
+scale_min = 0.1
+scale_max = 0.3
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cecky"]
+cull_mode = 2
+shading_mode = 0
+albedo_color = Color(1, 0.121569, 0.113725, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_jnhab"]
+material = SubResource("StandardMaterial3D_cecky")
+
 [node name="Boom" type="Node3D"]
 script = ExtResource("1_xiaqb")
 
@@ -131,3 +149,17 @@ libraries = {
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 mesh = SubResource("SphereMesh_ecnyg")
+
+[node name="Boom" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("17_fg5qw")
+volume_db = -24.0
+max_db = -3.0
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+emitting = false
+amount = 20
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_hx1r8")
+draw_pass_1 = SubResource("SphereMesh_jnhab")

@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://cbdyw0iohtlkv"]
 
 [ext_resource type="Script" path="res://scenes/enemy/enemy_shoot.gd" id="1_j4kvp"]
-[ext_resource type="PackedScene" uid="uid://dx10p3cnaj3ex" path="res://assets/przeciwnik_strzelajacy_.glb" id="2_t3jep"]
+[ext_resource type="PackedScene" uid="uid://5ryhr5njdein" path="res://assets/strzelajacy_poprawiony.glb" id="2_uhlbw"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_wowxq"]
 height = 1.80295
@@ -26,12 +26,12 @@ albedo_color = Color(0, 0, 0, 1)
 [sub_resource type="SphereMesh" id="SphereMesh_kf6m3"]
 material = SubResource("StandardMaterial3D_cecky")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7fjs7"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_32eia"]
 cull_mode = 2
 shading_mode = 0
 albedo_color = Color(0, 0, 0, 1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2ohxr"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xs6rh"]
 cull_mode = 2
 shading_mode = 0
 albedo_color = Color(0, 0, 0, 1)
@@ -66,29 +66,50 @@ explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_rylc6")
 draw_pass_1 = SubResource("SphereMesh_kf6m3")
 
-[node name="przeciwnik_strzelajacy_" parent="." instance=ExtResource("2_t3jep")]
+[node name="strzelajacy_poprawiony" parent="." instance=ExtResource("2_uhlbw")]
 
-[node name="Skeleton3D" parent="przeciwnik_strzelajacy_/Armature_001" index="0"]
-bones/0/position = Vector3(-0.0630974, -0.166117, -0.0631001)
-bones/1/rotation = Quaternion(-0.00213159, 0.880938, 0.473224, 0.00135755)
-bones/3/rotation = Quaternion(-0.500173, -0.0274359, -0.0496751, 0.864064)
-bones/5/rotation = Quaternion(-0.0268675, 0.396506, 0.915915, 0.056223)
-bones/7/rotation = Quaternion(0.922071, 0.00252331, 0.00106865, -0.387012)
-bones/9/rotation = Quaternion(0.482728, 0.807963, 0.144137, -0.305606)
-bones/11/rotation = Quaternion(-0.135143, 0.259873, 0.484843, 0.824093)
-bones/13/rotation = Quaternion(0.233907, 0.0200369, 0.86626, -0.440998)
-bones/15/rotation = Quaternion(0.910083, -0.375843, -0.150796, -0.0880477)
+[node name="Skeleton3D" parent="strzelajacy_poprawiony/Armature_001" index="0"]
+bones/0/position = Vector3(0, -0.25958, 0)
+bones/1/rotation = Quaternion(-2.17517e-07, 0.864746, 0.502209, -3.74545e-07)
+bones/1/scale = Vector3(0.999964, 0.999966, 0.999998)
+bones/2/rotation = Quaternion(0.0326959, 3.92396e-14, 2.83229e-08, 0.999465)
+bones/2/scale = Vector3(1, 1, 1)
+bones/3/rotation = Quaternion(-0.461358, -3.30872e-24, -8.582e-24, 0.887214)
+bones/4/rotation = Quaternion(-0.0186957, 2.89564e-24, 4.15128e-18, 0.999825)
+bones/5/rotation = Quaternion(0, 0.463653, 0.886017, -4.21885e-15)
+bones/5/scale = Vector3(1, 1, 1)
+bones/6/rotation = Quaternion(0.0084924, 1.19205e-07, 2.29469e-09, 0.999964)
+bones/7/rotation = Quaternion(0.920413, 5.60663e-15, -2.80331e-15, -0.390947)
+bones/8/rotation = Quaternion(-0.0321683, -3.52678e-15, 7.66953e-09, 0.999482)
+bones/9/rotation = Quaternion(0.463983, 0.81944, 0.178829, -0.285058)
+bones/10/rotation = Quaternion(0.019559, -0.0451411, -0.0262006, 0.998445)
+bones/10/scale = Vector3(1, 1, 1)
+bones/11/rotation = Quaternion(-0.125147, 0.265404, 0.451515, 0.842635)
+bones/12/rotation = Quaternion(-0.0108601, 0.025324, 0.0152179, 0.999504)
+bones/13/rotation = Quaternion(0.186887, 0.120379, 0.872081, -0.435956)
+bones/13/scale = Vector3(1, 1, 1)
+bones/14/rotation = Quaternion(0.00372763, -0.00954354, 0.00763065, 0.999918)
+bones/14/scale = Vector3(1, 1, 1)
+bones/15/rotation = Quaternion(0.897843, -0.404416, -0.166841, -0.0498981)
+bones/15/scale = Vector3(1, 1, 1)
+bones/16/rotation = Quaternion(-0.0100907, 0.029152, -0.0305449, 0.999057)
+bones/16/scale = Vector3(1, 1, 1)
 
-[node name="Cube" parent="przeciwnik_strzelajacy_/Armature_001/Skeleton3D" index="0"]
-transform = Transform3D(1.33693, 4.06919e-17, -2.80215e-18, -4.06919e-17, 1.32431, -0.18326, -2.80214e-18, 0.18326, 1.32431, -0.0630974, 1.04801, 0.419687)
+[node name="Cube" parent="strzelajacy_poprawiony/Armature_001/Skeleton3D" index="0"]
+transform = Transform3D(1.33693, 4.06919e-17, -2.80215e-18, -4.06919e-17, 1.32431, -0.18326, -2.80214e-18, 0.18326, 1.32431, -4.32831e-09, 0.954547, 0.482787)
 
-[node name="Cube" parent="przeciwnik_strzelajacy_/Armature_001/Skeleton3D/Cube" index="0"]
-surface_material_override/0 = SubResource("StandardMaterial3D_7fjs7")
+[node name="Cube" parent="strzelajacy_poprawiony/Armature_001/Skeleton3D/Cube" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_32eia")
 
-[node name="Sphere" parent="przeciwnik_strzelajacy_/Armature_001/Skeleton3D" index="1"]
-surface_material_override/0 = SubResource("StandardMaterial3D_2ohxr")
+[node name="Sphere" parent="strzelajacy_poprawiony/Armature_001/Skeleton3D" index="1"]
+surface_material_override/0 = SubResource("StandardMaterial3D_xs6rh")
+
+[node name="AttackTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]
+[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
 
-[editable path="przeciwnik_strzelajacy_"]
+[editable path="strzelajacy_poprawiony"]

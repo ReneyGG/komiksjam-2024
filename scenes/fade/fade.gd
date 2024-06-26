@@ -10,5 +10,6 @@ func fade(scene):
 	$AnimationPlayer.play("fade_out")
 
 func change():
+	Pause.unpause()
 	get_tree().paused = false
 	get_tree().change_scene_to_file(next)

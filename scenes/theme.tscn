@@ -1,8 +1,8 @@
 [gd_scene load_steps=2 format=3 uid="uid://bryvahlq6ya04"]
 
-[ext_resource type="AudioStream" uid="uid://ben7ej80ctr34" path="res://sfx/668879__zhr__retroclassic-game-music.wav" id="1_rvfr2"]
+[ext_resource type="AudioStream" uid="uid://b0dxlfexvtj13" path="res://sfx/8-bit-cartoon-comedy-by-prettysleepy-art-12290.mp3" id="1_72w8d"]
 
 [node name="ThemeSong" type="AudioStreamPlayer"]
 process_mode = 3
-stream = ExtResource("1_rvfr2")
+stream = ExtResource("1_72w8d")
 volume_db = -15.0

@@ -1,0 +1,165 @@
+[gd_scene load_steps=27 format=3 uid="uid://fudt1at4lno3"]
+
+[ext_resource type="Script" path="res://scenes/boom/boom.gd" id="1_61xod"]
+[ext_resource type="Texture2D" uid="uid://bjf66rdawbmhl" path="res://assets/boom/wybuch_test1-1.png" id="2_kidpq"]
+[ext_resource type="Texture2D" uid="uid://dn0klt7w6g25s" path="res://assets/boom/wybuch_test1-2.png" id="3_kfyto"]
+[ext_resource type="Texture2D" uid="uid://dxwb7iqhlc826" path="res://assets/boom/wybuch_test1-3.png" id="4_fptlp"]
+[ext_resource type="Texture2D" uid="uid://hrk141sibqph" path="res://assets/boom/wybuch_test1-4.png" id="5_co3pt"]
+[ext_resource type="Texture2D" uid="uid://cs54xua68872y" path="res://assets/boom/wybuch_test1-5.png" id="6_tc2ll"]
+[ext_resource type="Texture2D" uid="uid://brg7ga3y87iqj" path="res://assets/boom/wybuch_test1-6.png" id="7_2a6mp"]
+[ext_resource type="Texture2D" uid="uid://nljtcqu0ninc" path="res://assets/boom/wybuch_test1-7.png" id="8_arsek"]
+[ext_resource type="Texture2D" uid="uid://de75hp3wmh2ne" path="res://assets/boom/wybuch_test1-8.png" id="9_4wbhx"]
+[ext_resource type="Texture2D" uid="uid://dh60l2beuiyfs" path="res://assets/boom/wybuch_test1-9.png" id="10_dktuq"]
+[ext_resource type="Texture2D" uid="uid://bkj0hr5nvabro" path="res://assets/boom/wybuch_test1-10.png" id="11_1gcia"]
+[ext_resource type="Texture2D" uid="uid://ubolgrh7sw30" path="res://assets/boom/wybuch_test1-11.png" id="12_vjded"]
+[ext_resource type="Texture2D" uid="uid://bhjqjp0mjdedc" path="res://assets/boom/wybuch_test1-12.png" id="13_w2vf1"]
+[ext_resource type="Texture2D" uid="uid://df1ygh8x5act6" path="res://assets/boom/wybuch_test1-13.png" id="14_pffsr"]
+[ext_resource type="Texture2D" uid="uid://b4xnmr8vspb1x" path="res://assets/boom/wybuch_test1-14.png" id="15_6ufb8"]
+[ext_resource type="Texture2D" uid="uid://cwhhy53ku5ghc" path="res://assets/boom/wybuch_test1-15.png" id="16_sd0m2"]
+[ext_resource type="AudioStream" uid="uid://cra7yk23bcgso" path="res://sfx/mixkit-cartoon-blood-and-gore-hit-726.wav" id="17_8llxf"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_p1slh"]
+radius = 1.04747
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_t6rpf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_kidpq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_kfyto")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_fptlp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_co3pt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_tc2ll")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_2a6mp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_arsek")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_4wbhx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_dktuq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_1gcia")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_vjded")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_w2vf1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_pffsr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_6ufb8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_sd0m2")
+}],
+"loop": false,
+"name": &"default",
+"speed": 15.0
+}]
+
+[sub_resource type="Animation" id="Animation_hd16l"]
+resource_name = "start"
+length = 0.5
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"explode"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2s8jx"]
+_data = {
+"start": SubResource("Animation_hd16l")
+}
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_equvs"]
+cull_mode = 2
+shading_mode = 0
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_ecnyg"]
+material = SubResource("StandardMaterial3D_equvs")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_uf3vm"]
+lifetime_randomness = 0.5
+direction = Vector3(0, 1, 0)
+spread = 180.0
+initial_velocity_min = 12.0
+initial_velocity_max = 12.0
+scale_min = 0.1
+scale_max = 0.3
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_us8dc"]
+cull_mode = 2
+shading_mode = 0
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_u6ulg"]
+material = SubResource("StandardMaterial3D_us8dc")
+
+[node name="EnemyBoom" type="Node3D"]
+script = ExtResource("1_61xod")
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_p1slh")
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0.399483, 0)
+visible = false
+billboard = 1
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_t6rpf")
+frame = 14
+frame_progress = 1.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_2s8jx")
+}
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+mesh = SubResource("SphereMesh_ecnyg")
+
+[node name="Boom" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("17_8llxf")
+volume_db = -24.0
+max_db = -3.0
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+emitting = false
+amount = 20
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_uf3vm")
+draw_pass_1 = SubResource("SphereMesh_u6ulg")
