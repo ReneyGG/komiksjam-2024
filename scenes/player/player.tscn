@@ -12,9 +12,8 @@
 [ext_resource type="Texture2D" uid="uid://c1pvu71ldymiq" path="res://assets/ui/hp.poczatekpaskacrop.png" id="11_8usm1"]
 [ext_resource type="Texture2D" uid="uid://b3q0si0oegw60" path="res://assets/ui/hp.pasek.png" id="11_sgxlf"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vxki8"]
-radius = 0.144996
-height = 0.654155
+[sub_resource type="BoxShape3D" id="BoxShape3D_swamk"]
+size = Vector3(0.249725, 0.469238, 0.334351)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_y28ae"]
 radius = 0.207778
@@ -47,8 +46,8 @@ input_ray_pickable = false
 script = ExtResource("1_xcyma")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.010376, -0.11485, -0.0527649)
-shape = SubResource("CapsuleShape3D_vxki8")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00492862, -0.0838441, -0.0247498)
+shape = SubResource("BoxShape3D_swamk")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 path_desired_distance = 0.1
@@ -137,6 +136,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="TextureRect2" type="TextureRect" parent="CanvasLayer/Control"]
+visible = false
 layout_mode = 0
 offset_left = 80.0
 offset_top = 39.0

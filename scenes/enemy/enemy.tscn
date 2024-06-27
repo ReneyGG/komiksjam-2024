@@ -93,7 +93,11 @@ bones/16/scale = Vector3(1, 1, 1)
 [node name="Sphere_002" parent="przeciwnik_nowy_basic_poprawiony2/Armature_003/Skeleton3D" index="0"]
 surface_material_override/0 = SubResource("StandardMaterial3D_sjrjd")
 
+[node name="AttackTimer" type="Timer" parent="."]
+one_shot = true
+
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]
+[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
 
 [editable path="przeciwnik_nowy_basic_poprawiony2"]

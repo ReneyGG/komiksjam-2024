@@ -8,6 +8,7 @@ var acceleration = 0.1
 var target = null
 var attack := false
 var blobs = []
+var player_in_range := false
 
 func _ready():
 	randomize()
@@ -52,13 +53,25 @@ func hit(_p):
 	await $GPUParticles3D.finished
 	queue_free()
 
+func attack_player():
+	if $AttackTimer.time_left == 0 and player_in_range:
+		player.hit(0,self)
+		$AttackTimer.start()
+
 func _on_area_3d_body_entered(body):
 	if body.is_in_group("obelisk"):
 		blobs.append(body)
 	elif body.is_in_group("player"):
-		body.hit(0,self)
+		player_in_range = true
+		attack_player()
 	elif body.is_in_group("minion"):
 		body.hit(0)
 
 func _on_area_3d_body_exited(body):
-	blobs.erase(body)
+	if body.is_in_group("player"):
+		player_in_range = false
+	else:
+		blobs.erase(body)
+
+func _on_attack_timer_timeout():
+	attack_player()

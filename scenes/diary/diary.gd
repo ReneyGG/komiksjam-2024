@@ -16,6 +16,10 @@ func _ready():
 	$TextureRect/Closeup.hide()
 	$TextureRect/Darken.hide()
 
+func _process(delta):
+	if not on:
+		$TextureRect/Darken.hide()
+
 func reset(stage=0):
 	can_go = false
 	av = false
@@ -71,6 +75,7 @@ func open_diary():
 		can_go = true
 
 func close_diary():
+	$TextureRect/Darken.hide()
 	if not on:
 		return
 	on = false
