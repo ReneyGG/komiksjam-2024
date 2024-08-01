@@ -3,7 +3,7 @@ extends Node
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	randomize()
 
 func play_sound(s):
 	match s:
@@ -24,5 +24,6 @@ func play_sound(s):
 		"zabawka":
 			$Zabawka.play()
 		"boom":
+			$Boom.pitch_scale = randf_range(0.8,1.3)
 			$Boom.play()
 

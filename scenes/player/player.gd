@@ -12,7 +12,7 @@ var rotate_speed = 1000
 var projectile = preload("res://scenes/boom/boom.tscn")
 var minion = preload("res://scenes/minion/minion.tscn")
 var stop_move = false
-var hp = 10
+var hp = 10.0
 var dead := false
 var target_dream = null
 var healing := false
@@ -31,18 +31,19 @@ func _physics_process(delta):
 	#if(navigationAgent.is_navigation_finished()):
 		#return
 	
-	if Input.is_action_pressed("space"):
+	if Input.is_action_pressed("charge"):
 		if target_dream:
 			if target_dream.power < 100:
-				target_dream.heal(0.4)
+				target_dream.heal(0.3)
 				if camera.fov > 30:
 					camera.fov -= 0.04
 	else:
 		camera.fov = lerp(camera.fov, 50.0, 0.2)
 	
-	if Input.is_action_just_pressed("dash"):
+	if Input.is_action_just_pressed("dash") and $DashCooldown.time_left == 0:
 		speed = 100
 		camera.fov = lerp(camera.fov, 40.0, 0.1)
+		$DashCooldown.start(0.7)
 	else:
 		speed = 3
 		camera.fov = lerp(camera.fov, 50.0, 0.1)
@@ -52,13 +53,18 @@ func _physics_process(delta):
 		#var target_position = direction + global_position
 		#var new_transform = $maincharacter_wysrodkowany.transform.looking_at(target_position, Vector3.UP)
 		#$maincharacter_wysrodkowany.transform  = $maincharacter_wysrodkowany.transform.interpolate_with(new_transform, rotate_speed * delta)
-		$maincharacter_wysrodkowany.look_at(direction+global_position)
+		#$maincharacter_wysrodkowany.look_at(direction+global_position)
+		$maincharacter_wysrodkowany.rotation.y = lerp_angle($maincharacter_wysrodkowany.rotation.y, atan2(-velocity.x, -velocity.z), delta * 20)
 		velocity = velocity.lerp(direction.normalized() * speed, acceleration)
 	else:
 		velocity = velocity.lerp(Vector3.ZERO, friction)
 	
 	velocity.y = 0
 	move_and_slide()
+	self.global_position.y = 0.53
+	
+	if hp < 10.0:
+		hp += 0.001
 	
 	#moveToPoint(delta, speed)
 
@@ -80,15 +86,18 @@ func get_power(amount):
 	power += amount
 
 func knockback(source, power):
+	if not source:
+		return
 	var point = source.global_position - self.global_position
 	point = point.normalized()
 	point.y = 0
 	velocity -= point * power
 
-func hit(source):
+func hit(_p, source = null):
 	knockback(source, 10)
 	hp -= 1
 	$Hit.play()
+	get_parent().get_node("AnimationPlayer").stop(true)
 	get_parent().get_node("AnimationPlayer").play("get_hit")
 	camera.get_parent().shake()
 	FrameFreeze.frame_freeze(0.1,0.2)
@@ -116,29 +125,30 @@ func _input(event):
 	if dead:
 		return
 	
-	if Input.is_action_just_pressed("left_mouse") and not Input.is_action_pressed("space"):
-		if not $Cooldown.get_time_left() > 0 and power > 0:
-			var mousePos = get_viewport().get_mouse_position()
-			var rayLength = 1000
-			var from = camera.project_ray_origin(mousePos)
-			var to = from + camera.project_ray_normal(mousePos) * rayLength
-			var space = get_world_3d().direct_space_state
-			var rayQuery = PhysicsRayQueryParameters3D.new()
-			rayQuery.from = from
-			rayQuery.to = to
-			rayQuery.collide_with_areas = true
-			rayQuery.collision_mask = 1
-			var result = space.intersect_ray(rayQuery)
-			
-			if result.get("position"):
-				power -= 1
-				stop_move = true
-				$Cooldown.start()
-				var init = minion.instantiate()
-				get_parent().get_node("Minions").add_child(init)
-				init.global_position = result.position
+	if get_tree().current_scene.level >= 2:
+		if Input.is_action_just_pressed("left_mouse") and not Input.is_action_pressed("charge"):
+			if not $Cooldown.get_time_left() > 0 and power > 0:
+				var mousePos = get_viewport().get_mouse_position()
+				var rayLength = 1000
+				var from = camera.project_ray_origin(mousePos)
+				var to = from + camera.project_ray_normal(mousePos) * rayLength
+				var space = get_world_3d().direct_space_state
+				var rayQuery = PhysicsRayQueryParameters3D.new()
+				rayQuery.from = from
+				rayQuery.to = to
+				rayQuery.collide_with_areas = true
+				rayQuery.collision_mask = 1
+				var result = space.intersect_ray(rayQuery)
+				
+				if result.get("position"):
+					power -= 1
+					stop_move = true
+					$Cooldown.start()
+					var init = minion.instantiate()
+					get_parent().get_node("Minions").add_child(init)
+					init.global_position = result.position
 	
-	if Input.is_action_just_pressed("right_mouse") and not Input.is_action_pressed("space"):
+	if Input.is_action_just_pressed("right_mouse") and not Input.is_action_pressed("charge"):
 		if not $Cooldown.get_time_left() > 0 and power > 0:
 			var mousePos = get_viewport().get_mouse_position()
 			var rayLength = 1000
@@ -158,7 +168,8 @@ func _input(event):
 				$Cooldown.start()
 				var init = projectile.instantiate()
 				get_parent().get_node("Projectiles").add_child(init)
-				init.global_position = result.position
+				init.global_position = self.global_position
+				init.end_pos = result.position
 
 func _on_cooldown_timeout():
 	stop_move = false
@@ -173,3 +184,4 @@ func _on_area_3d_body_exited(body):
 
 func _on_knockback_area_body_entered(body):
 	knockback(body, 2)
+

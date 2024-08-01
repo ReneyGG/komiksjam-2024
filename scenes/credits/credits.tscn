@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scenes/credits/credits.gd" id="1_82orm"]
 [ext_resource type="AudioStream" uid="uid://c0mn58khn0ulk" path="res://sfx/menu.mp3" id="1_o8rai"]
-[ext_resource type="Texture2D" uid="uid://cpxjhl6scceme" path="res://assets/CREDITS.png" id="3_vg22k"]
+[ext_resource type="Texture2D" uid="uid://bionke7anyx3a" path="res://assets/CREDITS (1).png" id="3_25mru"]
 
 [node name="Credits" type="Control"]
 layout_mode = 3
@@ -23,7 +23,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("3_vg22k")
+texture = ExtResource("3_25mru")
 expand_mode = 1
 stretch_mode = 4
 

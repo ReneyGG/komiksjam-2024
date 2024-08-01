@@ -1,0 +1,187 @@
+[gd_scene load_steps=7 format=3 uid="uid://djm4x04s53yt6"]
+
+[ext_resource type="Texture2D" uid="uid://croeqfwktcruf" path="res://assets/pause_menu.png" id="1_2rj36"]
+[ext_resource type="Script" path="res://scenes/pause/pause.gd" id="1_jyeji"]
+[ext_resource type="FontFile" uid="uid://dd4uc8nh0wg3v" path="res://AmaticSC-Bold.ttf" id="2_54gnn"]
+[ext_resource type="Shader" path="res://scenes/pause/blur.gdshader" id="2_f7b2y"]
+[ext_resource type="Texture2D" uid="uid://btbtoi7nonl8n" path="res://assets/Tutorial0.png" id="5_wuie0"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_585df"]
+shader = ExtResource("2_f7b2y")
+shader_parameter/lod = 2.0
+
+[node name="Pause" type="CanvasLayer"]
+process_mode = 3
+layer = 2
+script = ExtResource("1_jyeji")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+material = SubResource("ShaderMaterial_585df")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -241.0
+offset_top = -374.0
+offset_right = 241.0
+offset_bottom = 374.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_2rj36")
+
+[node name="back" type="Label" parent="Control/TextureRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -117.5
+offset_top = -286.0
+offset_right = 117.5
+offset_bottom = -204.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_54gnn")
+theme_override_font_sizes/font_size = 64
+text = "back to game"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BackButton" type="TextureButton" parent="Control/TextureRect/back"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+
+[node name="tutorial" type="Label" parent="Control/TextureRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -76.5
+offset_top = -164.0
+offset_right = 76.5
+offset_bottom = -82.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_54gnn")
+theme_override_font_sizes/font_size = 64
+text = "tutorial"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TutButton" type="TextureButton" parent="Control/TextureRect/tutorial"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+
+[node name="menu" type="Label" parent="Control/TextureRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -110.0
+offset_top = 38.0
+offset_right = 110.0
+offset_bottom = 120.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_54gnn")
+theme_override_font_sizes/font_size = 64
+text = "main menu"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MenuButton" type="TextureButton" parent="Control/TextureRect/menu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+
+[node name="exit" type="Label" parent="Control/TextureRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -33.0
+offset_top = 160.0
+offset_right = 33.0
+offset_bottom = 242.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_54gnn")
+theme_override_font_sizes/font_size = 64
+text = "exit"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ExitButton" type="TextureButton" parent="Control/TextureRect/exit"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+
+[node name="Tutorial" type="TextureRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_wuie0")
+
+[node name="ExitTutorial" type="TextureButton" parent="Control/Tutorial"]
+layout_mode = 0
+offset_left = 236.0
+offset_top = 154.0
+offset_right = 310.0
+offset_bottom = 227.0
+mouse_default_cursor_shape = 2
+
+[connection signal="pressed" from="Control/TextureRect/back/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="Control/TextureRect/tutorial/TutButton" to="." method="_on_tut_button_pressed"]
+[connection signal="pressed" from="Control/TextureRect/menu/MenuButton" to="." method="_on_menu_button_pressed"]
+[connection signal="pressed" from="Control/TextureRect/exit/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="Control/Tutorial/ExitTutorial" to="." method="_on_exit_tutorial_pressed"]

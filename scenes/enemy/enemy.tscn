@@ -1,18 +1,13 @@
 [gd_scene load_steps=9 format=3 uid="uid://c6jho4b3fpslj"]
 
 [ext_resource type="Script" path="res://scenes/enemy/enemy.gd" id="1_tjcq3"]
-[ext_resource type="PackedScene" uid="uid://cacwxmrxabpv8" path="res://scenes/enemy/test_animprzeciwnika_6.tscn" id="2_2xdt5"]
+[ext_resource type="PackedScene" uid="uid://dkp4s8a3m20ky" path="res://assets/przeciwnik_nowy_basic_poprawiony2.glb" id="2_qi8dg"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_wowxq"]
 height = 1.80295
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_kf1cp"]
 radius = 0.781809
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_typks"]
-cull_mode = 2
-shading_mode = 0
-albedo_color = Color(0, 0, 0, 1)
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_rylc6"]
 lifetime_randomness = 0.5
@@ -31,6 +26,11 @@ albedo_color = Color(0, 0, 0, 1)
 [sub_resource type="SphereMesh" id="SphereMesh_kf6m3"]
 material = SubResource("StandardMaterial3D_cecky")
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sjrjd"]
+cull_mode = 2
+shading_mode = 0
+albedo_color = Color(0, 0, 0, 1)
+
 [node name="Enemy" type="CharacterBody3D" groups=["enemy"]]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 collision_layer = 6
@@ -48,23 +48,6 @@ collision_mask = 6
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 shape = SubResource("SphereShape3D_kf1cp")
 
-[node name="test_animprzeciwnika6" parent="." instance=ExtResource("2_2xdt5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.83627)
-
-[node name="Skeleton3D" parent="test_animprzeciwnika6/Armature_001" index="0"]
-bones/0/position = Vector3(0.333463, -0.593035, -0.271419)
-bones/1/rotation = Quaternion(0.00933321, 0.8022, 0.596956, -0.00557993)
-bones/3/rotation = Quaternion(-0.201496, 0.0364808, 0.0659135, 0.976588)
-bones/5/rotation = Quaternion(-0.000199956, 0.537931, 0.842989, 0.000420262)
-bones/7/rotation = Quaternion(0.962675, -0.154663, -0.0648667, -0.212433)
-bones/9/rotation = Quaternion(0.372976, 0.843155, 0.34586, -0.17424)
-bones/11/rotation = Quaternion(0.101435, 0.377101, 0.517633, 0.76129)
-bones/13/rotation = Quaternion(0.107378, 0.277013, 0.867942, -0.398007)
-bones/15/rotation = Quaternion(0.848994, -0.424528, -0.256858, 0.181682)
-
-[node name="Sphere" parent="test_animprzeciwnika6/Armature_001/Skeleton3D" index="0"]
-surface_material_override/0 = SubResource("StandardMaterial3D_typks")
-
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
 
@@ -77,7 +60,44 @@ explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_rylc6")
 draw_pass_1 = SubResource("SphereMesh_kf6m3")
 
+[node name="przeciwnik_nowy_basic_poprawiony2" parent="." instance=ExtResource("2_qi8dg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.211498)
+
+[node name="Skeleton3D" parent="przeciwnik_nowy_basic_poprawiony2/Armature_003" index="0"]
+bones/0/position = Vector3(0, -0.279523, -0.00491993)
+bones/0/rotation = Quaternion(0, 0.0119193, 0, 0.999929)
+bones/1/rotation = Quaternion(-0.0585898, 0.887747, 0.455242, 0.0350245)
+bones/1/scale = Vector3(1, 1, 1)
+bones/2/rotation = Quaternion(0.0326959, 3.92396e-14, 2.83229e-08, 0.999465)
+bones/2/scale = Vector3(1, 1, 1)
+bones/3/rotation = Quaternion(-0.439792, -0.0276909, -0.0500318, 0.896278)
+bones/4/rotation = Quaternion(-0.0186957, 2.89564e-24, 4.15128e-18, 0.999825)
+bones/5/rotation = Quaternion(-0.0332262, 0.471738, 0.878339, 0.0698646)
+bones/6/rotation = Quaternion(0.0084924, 1.19205e-07, 2.29469e-09, 0.999964)
+bones/7/rotation = Quaternion(0.902949, 0.0582527, 0.0244314, -0.425081)
+bones/8/rotation = Quaternion(-0.0321683, -3.52678e-15, 7.66953e-09, 0.999482)
+bones/9/rotation = Quaternion(0.418567, 0.843331, 0.200329, -0.271041)
+bones/10/rotation = Quaternion(0.019559, -0.0451411, -0.0262006, 0.998445)
+bones/10/scale = Vector3(1, 1, 1)
+bones/11/rotation = Quaternion(-0.185349, 0.230838, 0.396733, 0.868886)
+bones/12/rotation = Quaternion(-0.0108601, 0.025324, 0.0152179, 0.999504)
+bones/13/rotation = Quaternion(0.166953, 0.160892, 0.862972, -0.44891)
+bones/13/scale = Vector3(1, 1, 1)
+bones/14/rotation = Quaternion(0.00372763, -0.00954354, 0.00763065, 0.999918)
+bones/14/scale = Vector3(1, 1, 1)
+bones/15/rotation = Quaternion(0.893872, -0.405793, -0.127911, -0.141295)
+bones/15/scale = Vector3(1, 1, 1)
+bones/16/rotation = Quaternion(-0.0100907, 0.029152, -0.0305449, 0.999057)
+bones/16/scale = Vector3(1, 1, 1)
+
+[node name="Sphere_002" parent="przeciwnik_nowy_basic_poprawiony2/Armature_003/Skeleton3D" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_sjrjd")
+
+[node name="AttackTimer" type="Timer" parent="."]
+one_shot = true
+
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]
+[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
 
-[editable path="test_animprzeciwnika6"]
+[editable path="przeciwnik_nowy_basic_poprawiony2"]

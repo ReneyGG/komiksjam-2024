@@ -9,6 +9,7 @@ shading_mode = 0
 albedo_color = Color(1, 0.121569, 0.113725, 1)
 
 [node name="Dream1" instance=ExtResource("1_fh8fd")]
+collision_layer = 30
 
 [node name="mesh" parent="." index="2" instance=ExtResource("2_byni6")]
 

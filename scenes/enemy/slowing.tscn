@@ -13,4 +13,4 @@ region = Rect2(81.359, 76.8397, 580.103, 720.128)
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
 texture = SubResource("AtlasTexture_534or")
 
-[editable path="test_animprzeciwnika6"]
+[editable path="przeciwnik_nowy_basic_poprawiony2"]

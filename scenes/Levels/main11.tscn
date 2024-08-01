@@ -1,0 +1,689 @@
+[gd_scene load_steps=62 format=3 uid="uid://dm8r0dqavyng7"]
+
+[ext_resource type="Script" path="res://scenes/Levels/main.gd" id="1_jdjms"]
+[ext_resource type="Shader" path="res://scenes/tilt_min.gdshader" id="2_conf8"]
+[ext_resource type="Texture2D" uid="uid://ucuxeth8jo3l" path="res://assets/vignette.png" id="3_cqd6i"]
+[ext_resource type="Script" path="res://scenes/Forgor.gd" id="4_u5p3t"]
+[ext_resource type="Texture2D" uid="uid://cw3ggqlawxmmj" path="res://assets/gradient.png" id="5_1lfs2"]
+[ext_resource type="FontFile" uid="uid://d36jq6ah42c8x" path="res://AmaticSC-Regular.ttf" id="6_nqnxs"]
+[ext_resource type="FontFile" uid="uid://dd4uc8nh0wg3v" path="res://AmaticSC-Bold.ttf" id="7_o41h5"]
+[ext_resource type="PackedScene" uid="uid://c5gkvpgglwkvl" path="res://assets/morze_lzejsze.glb" id="8_7w1i3"]
+[ext_resource type="Shader" path="res://scenes/pause/blur.gdshader" id="8_e763x"]
+[ext_resource type="Texture2D" uid="uid://f1ehkm3f0qgc" path="res://assets/tutorial1.png" id="9_w22ac"]
+[ext_resource type="PackedScene" uid="uid://cjnce710qm38a" path="res://assets/lvl3.glb" id="9_x8kei"]
+[ext_resource type="PackedScene" uid="uid://8k7g88vnyxle" path="res://scenes/player/player.tscn" id="10_0m27y"]
+[ext_resource type="Script" path="res://scenes/Levels/Tutorial1.gd" id="10_5n5ks"]
+[ext_resource type="PackedScene" uid="uid://df0rmkr0v5din" path="res://scenes/spawner/spawner.tscn" id="11_1kps0"]
+[ext_resource type="Script" path="res://scenes/CamManager.gd" id="12_1ilxg"]
+[ext_resource type="Script" path="res://scenes/Levels/CamShaker.gd" id="13_u3ma8"]
+[ext_resource type="Script" path="res://scenes/Camera3D.gd" id="14_genx0"]
+[ext_resource type="Shader" path="res://outline.gdshader" id="15_umw5l"]
+[ext_resource type="PackedScene" uid="uid://t34aheu0tmks" path="res://scenes/dreams/dream_1.tscn" id="16_56ghv"]
+[ext_resource type="PackedScene" uid="uid://bc3npig5r30r8" path="res://scenes/dreams/dream_2.tscn" id="18_pj418"]
+[ext_resource type="AudioStream" uid="uid://cww4p54ha58s8" path="res://sfx/podloga_skrzyp.mp3" id="20_5nbk0"]
+[ext_resource type="PackedScene" uid="uid://bawpiijdc0jqx" path="res://scenes/dreams/dream_3.tscn" id="20_f4b53"]
+[ext_resource type="PackedScene" uid="uid://ttmlusuawhcc" path="res://scenes/dreams/dream_4.tscn" id="22_2nh0g"]
+[ext_resource type="AudioStream" uid="uid://doj0bq2tkrf8b" path="res://sfx/636956__sergequadrado__child-crying.wav" id="23_nh231"]
+[ext_resource type="PackedScene" uid="uid://c2icmsoh7y32q" path="res://assets/lodka.glb" id="24_pngwl"]
+[ext_resource type="PackedScene" uid="uid://c56i3fimoih28" path="res://scenes/Levels/power_ups.tscn" id="25_dhf0g"]
+[ext_resource type="AudioStream" uid="uid://c0mn58khn0ulk" path="res://sfx/menu.mp3" id="26_tffto"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_anyl1"]
+shader = ExtResource("2_conf8")
+shader_parameter/limit = 0.3
+shader_parameter/blur = 2.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_l4nom"]
+shader = ExtResource("8_e763x")
+shader_parameter/lod = 2.0
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_vpah6"]
+
+[sub_resource type="Sky" id="Sky_8fjwj"]
+sky_material = SubResource("ProceduralSkyMaterial_vpah6")
+
+[sub_resource type="Environment" id="Environment_t0v6s"]
+background_mode = 2
+sky = SubResource("Sky_8fjwj")
+tonemap_mode = 1
+glow_enabled = true
+glow_bloom = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ujwvp"]
+cull_mode = 2
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ddbxk"]
+size = Vector3(26.6082, 0.618645, 27.1082)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wew5m"]
+size = Vector3(0.875122, 0.966309, 0.272217)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_para7"]
+height = 0.668031
+radius = 1.89075
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_bx6ng"]
+height = 0.604296
+radius = 1.02983
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qob3o"]
+size = Vector3(0.15625, 0.735962, 1.57861)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8spcq"]
+size = Vector3(0.218391, 1.22192, 0.22197)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_y7jdu"]
+size = Vector3(0.256775, 0.712769, 0.812988)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_d42g6"]
+size = Vector3(0.358322, 0.52594, 0.333313)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_jhpiv"]
+radius = 0.227817
+height = 2.86687
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_b38wl"]
+size = Vector3(3.12817, 1, 5.54517)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_uq7fb"]
+size = Vector3(1.60452, 0.711548, 0.156921)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_e66l4"]
+size = Vector3(0.838379, 0.720337, 0.45459)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5btpf"]
+size = Vector3(0.256927, 1.12097, 0.248779)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vddru"]
+size = Vector3(0.631409, 0.623779, 0.614685)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_oj15m"]
+size = Vector3(1.0365, 0.594788, 0.162842)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_pbckk"]
+radius = 1.26995
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1xbgr"]
+size = Vector3(0.826172, 0.563599, 0.429321)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_74mhm"]
+size = Vector3(0.244751, 1.1792, 0.355469)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cugsg"]
+size = Vector3(1.52707, 0.699951, 0.158203)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_ew05t"]
+height = 1.09212
+radius = 1.58082
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_aawiv"]
+height = 1.40371
+radius = 1.1772
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_i5tb8"]
+height = 1.23158
+radius = 1.87419
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5cpft"]
+size = Vector3(1, 6.79797, 27.375)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_74gg0"]
+size = Vector3(1, 6.79498, 8.38953)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2tuh7"]
+render_priority = 0
+shader = ExtResource("15_umw5l")
+shader_parameter/shadow_color = Color(0, 0, 0, 1)
+shader_parameter/shadow_thickness = 2.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_7tgkd"]
+material = SubResource("ShaderMaterial_2tuh7")
+flip_faces = true
+size = Vector2(2, 2)
+
+[sub_resource type="Animation" id="Animation_mk887"]
+resource_name = "get_hit"
+length = 0.4
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/TextureRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.06, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.439216), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_67h72"]
+_data = {
+"get_hit": SubResource("Animation_mk887")
+}
+
+[node name="Main" type="Node3D"]
+script = ExtResource("1_jdjms")
+level = 3
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+process_mode = 3
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Control"]
+material = SubResource("ShaderMaterial_anyl1")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_cqd6i")
+expand_mode = 1
+
+[node name="Forgor" type="Control" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("4_u5p3t")
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/Forgor"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_1lfs2")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/Forgor"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -234.0
+offset_top = -196.0
+offset_right = 234.0
+offset_bottom = -114.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("6_nqnxs")
+theme_override_font_sizes/font_size = 64
+text = "Your   precious   memories"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="CanvasLayer/Control/Forgor"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -212.0
+offset_top = -340.0
+offset_right = 212.0
+offset_bottom = -188.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("7_o41h5")
+theme_override_font_sizes/font_size = 120
+text = "you  lost"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="CanvasLayer/Control/Forgor"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -680.0
+offset_top = 170.0
+offset_right = -484.0
+offset_bottom = 337.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("6_nqnxs")
+theme_override_font_sizes/font_size = 64
+text = "I  want  to
+remember"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RestartButton" type="TextureButton" parent="CanvasLayer/Control/Forgor/Label3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+
+[node name="Label4" type="Label" parent="CanvasLayer/Control/Forgor"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 473.0
+offset_top = 170.0
+offset_right = 664.0
+offset_bottom = 337.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("6_nqnxs")
+theme_override_font_sizes/font_size = 64
+text = "go  back
+to  menu"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MenuButton" type="TextureButton" parent="CanvasLayer/Control/Forgor/Label4"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+
+[node name="VSlider" type="VSlider" parent="CanvasLayer/Control"]
+visible = false
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -86.0
+offset_top = -294.0
+offset_right = -24.0
+offset_bottom = -29.0
+grow_horizontal = 0
+grow_vertical = 0
+min_value = -100.0
+step = 0.5
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/VSlider"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -178.0
+offset_top = -40.5
+offset_right = -49.0
+offset_bottom = 41.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("7_o41h5")
+theme_override_font_sizes/font_size = 64
+text = "40"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="BlurTut" type="ColorRect" parent="CanvasLayer/Control"]
+material = SubResource("ShaderMaterial_l4nom")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Tutorial" type="TextureRect" parent="CanvasLayer/Control/BlurTut"]
+process_mode = 3
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_w22ac")
+script = ExtResource("10_5n5ks")
+
+[node name="CloseTutButton" type="TextureButton" parent="CanvasLayer/Control/BlurTut/Tutorial"]
+layout_mode = 1
+offset_left = 235.0
+offset_top = 153.0
+offset_right = 311.0
+offset_bottom = 229.0
+mouse_default_cursor_shape = 2
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_t0v6s")
+
+[node name="morze_lzejsze" parent="." instance=ExtResource("8_7w1i3")]
+transform = Transform3D(0.999999, 0, 0, 0, 1, 0, 0, 0, 0.999999, -1, 0, -3)
+
+[node name="lvl3" parent="." instance=ExtResource("9_x8kei")]
+
+[node name="Cube_012" parent="lvl3" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_ujwvp")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="lvl3"]
+collision_layer = 3
+collision_mask = 7
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="lvl3/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.659302, -0.262164, 0.432526)
+shape = SubResource("BoxShape3D_ddbxk")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="lvl3/StaticBody3D"]
+transform = Transform3D(0.876861, 0, 0.480744, 0, 1, 0, -0.480744, 0, 0.876861, -6.58131, 0.0257419, 10.3709)
+shape = SubResource("BoxShape3D_wew5m")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="lvl3/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.3936, 0.345225, 8.75943)
+shape = SubResource("CylinderShape3D_para7")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="lvl3/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.51814, 0.247025, 9.54592)
+shape = SubResource("CylinderShape3D_bx6ng")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="lvl3/StaticBody3D"]
+transform = Transform3D(0.709349, 0, -0.704857, 0, 1, 0, 0.704857, 0, 0.709349, 8.57159, 0.333315, 8.32172)
+shape = SubResource("BoxShape3D_qob3o")
+
+[node name="CollisionShape3D6" type="CollisionShape3D" parent="lvl3/StaticBody3D"]
+transform = Transform3D(0.994874, 0, -0.101126, 0, 1, 0, 0.101126, 0, 0.994874, 4.93818, 0.608332, 5.53366)
+shape = SubResource("BoxShape3D_8spcq")
+
+[node name="CollisionShape3D7" type="CollisionShape3D" parent="lvl3/StaticBody3D"]
+transform = Transform3D(0.994874, 0, -0.101126, 0, 1, 0, 0.101126, 0, 0.994874, 8.2683, 0.608332, 5.85784)
+shape = SubResource("BoxShape3D_8spcq")
+
+[node name="CollisionShape3D8" type="CollisionShape3D" parent="lvl3/StaticBody3D"]
+transform = Transform3D(0.994874, 0, -0.101126, 0, 1, 0, 0.101126, 0, 0.994874, 8.45004, 0.608332, 4.06919)
+shape = SubResource("BoxShape3D_8spcq")
+
+[node name="CollisionShape3D9" type="CollisionShape3D" parent="lvl3/StaticBody3D"]
+transform = Transform3D(0.994874, 0, -0.101126, 0, 1, 0, 0.101126, 0, 0.994874, 5.11433, 0.608332, 3.74705)
+shape = SubResource("BoxShape3D_8spcq")
+
+[node name="CollisionShape3D16" type="CollisionShape3D" parent="lvl3/StaticBody3D"]
+transform = Transform3D(0.890022, 0, -0.455918, 0, 1, 0, 0.455918, 0, 0.890022, 5.43356, 0.608332, -7.47026)
+shape = SubResource("BoxShape3D_8spcq")
+
+[node name="CollisionShape3D17" type="CollisionShape3D" parent="lvl3/StaticBody3D"]
+transform = Transform3D(0.890022, 0, -0.455918, 0, 1, 0, 0.455918, 0, 0.890022, 6.89791, 0.603704, -10.4906)
+shape = SubResource("BoxShape3D_8spcq")
+
+[node name="CollisionShape3D18" type="CollisionShape3D" parent="lvl3/StaticBody3D"]
+transform = Transform3D(0.890022, 0, -0.455918, 0, 1, 0, 0.455918, 0, 0.890022, 5.28092, 0.603704, -11.2735)
+shape = SubResource("BoxShape3D_8spcq")
+
+[node name="CollisionShape3D19" type="CollisionShape3D" parent="lvl3/StaticBody3D"]
+transform = Transform3D(0.890022, 0, -0.455918, 0, 1, 0, 0.455918, 0, 0.890022, 3.82, 0.603704, -8.25338)
+shape = SubResource("BoxShape3D_8spcq")
+
+[node name="CollisionShape3D24" type="CollisionShape3D" parent="lvl3/StaticBody3D"]
+transform = Transform3D(0.890022, 0, -0.455918, 0, 1, 0, 0.455918, 0, 0.890022, -4.37734, 0.603704, -5.46699)
+shape = SubResource("BoxShape3D_8spcq")
+
+[node name="CollisionShape3D25" type="CollisionShape3D" parent="lvl3/StaticBody3D"]
+transform = Transform3D(0.890022, 0, -0.455918, 0, 1, 0, 0.455918, 0, 0.890022, -5.99508, 0.596301, -6.25067)
+shape = SubResource("BoxShape3D_8spcq")
+
+[node name="CollisionShape3D26" type="CollisionShape3D" parent="lvl3/StaticBody3D"]
+transform = Transform3D(0.890022, 0, -0.455918, 0, 1, 0, 0.455918, 0, 0.890022, -7.45851, 0.596301, -3.23305)
+shape = SubResource("BoxShape3D_8spcq")
+
+[node name="CollisionShape3D27" type="CollisionShape3D" parent="lvl3/StaticBody3D"]
+transform = Transform3D(0.890022, 0, -0.455918, 0, 1, 0, 0.455918, 0, 0.890022, -5.83847, 0.596301, -2.4491)
+shape = SubResource("BoxShape3D_8spcq")
+
+[node name="CollisionShape3D28" type="CollisionShape3D" parent="lvl3/StaticBody3D"]
+transform = Transform3D(0.77088, 0, -0.63698, 0, 1, 0, 0.63698, 0, 0.77088, -9.3803, 0.674789, -10.0504)
+shape = SubResource("BoxShape3D_8spcq")
+
+[node name="CollisionShape3D29" type="CollisionShape3D" parent="lvl3/StaticBody3D"]
+transform = Transform3D(0.77088, 0, -0.63698, 0, 1, 0, 0.63698, 0, 0.77088, -10.522, 0.674789, -8.6693)
+shape = SubResource("BoxShape3D_8spcq")
+
+[node name="CollisionShape3D10" type="CollisionShape3D" parent="lvl3/StaticBody3D"]
+transform = Transform3D(0.996155, 0, -0.0876078, 0, 1, 0, 0.0876078, 0, 0.996155, 8.44426, 0.420324, 4.46178)
+shape = SubResource("BoxShape3D_y7jdu")
+
+[node name="CollisionShape3D11" type="CollisionShape3D" parent="lvl3/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.76302, 0.182404, 3.4164)
+shape = SubResource("BoxShape3D_d42g6")
+
+[node name="CollisionShape3D12" type="CollisionShape3D" parent="lvl3/StaticBody3D"]
+transform = Transform3D(-4.34559e-08, -0.994155, 0.107965, 1, -4.37114e-08, 0, 4.71928e-09, 0.107965, 0.994155, 3.66127, 0.144268, -0.0738207)
+shape = SubResource("CapsuleShape3D_jhpiv")
+
+[node name="CollisionShape3D13" type="CollisionShape3D" parent="lvl3/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6564, 0.240792, 0.43271)
+shape = SubResource("BoxShape3D_b38wl")
+
+[node name="CollisionShape3D14" type="CollisionShape3D" parent="lvl3/StaticBody3D"]
+transform = Transform3D(0.741707, 0, -0.670724, 0, 1, 0, 0.670724, 0, 0.741707, 8.59422, 0.340213, -9.38201)
+shape = SubResource("BoxShape3D_uq7fb")
+
+[node name="CollisionShape3D15" type="CollisionShape3D" parent="lvl3/StaticBody3D"]
+transform = Transform3D(0.977607, 0, -0.210438, 0, 1, 0, 0.210438, 0, 0.977607, 7.13921, 0.347473, -9.38693)
+shape = SubResource("BoxShape3D_e66l4")
+
+[node name="CollisionShape3D20" type="CollisionShape3D" parent="lvl3/StaticBody3D"]
+transform = Transform3D(0.920566, 0, -0.390587, 0, 1, 0, 0.390587, 0, 0.920566, 5.50622, 0.616101, -7.65589)
+shape = SubResource("BoxShape3D_5btpf")
+
+[node name="CollisionShape3D21" type="CollisionShape3D" parent="lvl3/StaticBody3D"]
+transform = Transform3D(0.993696, 0, 0.112111, 0, 1, 0, -0.112111, 0, 0.993696, 5.89551, 0.344658, -10.2314)
+shape = SubResource("BoxShape3D_vddru")
+
+[node name="CollisionShape3D22" type="CollisionShape3D" parent="lvl3/StaticBody3D"]
+transform = Transform3D(0.95609, 0, -0.293073, 0, 1, 0, 0.293073, 0, 0.95609, 4.68328, 0.410217, -10.7873)
+shape = SubResource("BoxShape3D_oj15m")
+
+[node name="CollisionShape3D23" type="CollisionShape3D" parent="lvl3/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.47575, -0.0185411, -8.05968)
+shape = SubResource("SphereShape3D_pbckk")
+
+[node name="CollisionShape3D30" type="CollisionShape3D" parent="lvl3/StaticBody3D"]
+transform = Transform3D(0.737431, 0, 0.675423, 0, 1, 0, -0.675423, 0, 0.737431, -6.76281, 0.273499, -3.54837)
+shape = SubResource("BoxShape3D_1xbgr")
+
+[node name="CollisionShape3D31" type="CollisionShape3D" parent="lvl3/StaticBody3D"]
+transform = Transform3D(0.924639, 0, -0.380844, 0, 1, 0, 0.380844, 0, 0.924639, -5.76335, 0.599145, -2.64566)
+shape = SubResource("BoxShape3D_74mhm")
+
+[node name="CollisionShape3D32" type="CollisionShape3D" parent="lvl3/StaticBody3D"]
+transform = Transform3D(0.748724, 0, -0.662881, 0, 1, 0, 0.662881, 0, 0.748724, -6.80472, 0.338183, -2.47205)
+shape = SubResource("BoxShape3D_cugsg")
+
+[node name="CollisionShape3D33" type="CollisionShape3D" parent="lvl3/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.65824, 0.124892, 1.1261)
+shape = SubResource("CylinderShape3D_ew05t")
+
+[node name="CollisionShape3D34" type="CollisionShape3D" parent="lvl3/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.83911, 0, 1.06681)
+shape = SubResource("CylinderShape3D_aawiv")
+
+[node name="CollisionShape3D35" type="CollisionShape3D" parent="lvl3/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.0925, 0, 4.97164)
+shape = SubResource("CylinderShape3D_i5tb8")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="lvl3"]
+collision_layer = 32
+collision_mask = 32
+
+[node name="CollisionShape3D36" type="CollisionShape3D" parent="lvl3/StaticBody3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.7538, -2.233, 0.469727)
+shape = SubResource("BoxShape3D_5cpft")
+
+[node name="CollisionShape3D37" type="CollisionShape3D" parent="lvl3/StaticBody3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.0675, -2.233, 0.469727)
+shape = SubResource("BoxShape3D_5cpft")
+
+[node name="CollisionShape3D38" type="CollisionShape3D" parent="lvl3/StaticBody3D2"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.245309, -2.233, 14.0186)
+shape = SubResource("BoxShape3D_5cpft")
+
+[node name="CollisionShape3D39" type="CollisionShape3D" parent="lvl3/StaticBody3D2"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.364251, -2.233, -12.2881)
+shape = SubResource("BoxShape3D_5cpft")
+
+[node name="CollisionShape3D40" type="CollisionShape3D" parent="lvl3/StaticBody3D2"]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 9.78555, -2.2345, -10.7365)
+shape = SubResource("BoxShape3D_74gg0")
+
+[node name="CollisionShape3D41" type="CollisionShape3D" parent="lvl3/StaticBody3D2"]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -10.8643, -2.2345, 11.5252)
+shape = SubResource("BoxShape3D_74gg0")
+
+[node name="CollisionShape3D42" type="CollisionShape3D" parent="lvl3/StaticBody3D2"]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 9.74954, -2.2345, 11.3832)
+shape = SubResource("BoxShape3D_74gg0")
+
+[node name="CollisionShape3D43" type="CollisionShape3D" parent="lvl3/StaticBody3D2"]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -11.651, -2.2345, -10.4208)
+shape = SubResource("BoxShape3D_74gg0")
+
+[node name="Player" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("10_0m27y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.17666, 0.529001, 6.22547)
+camera = NodePath("../CamManager/CamShaker/Camera3D")
+
+[node name="Spawner" parent="Player" instance=ExtResource("11_1kps0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.51481, -0.235975, -8.82598)
+horizontal = true
+
+[node name="Spawner2" parent="Player" instance=ExtResource("11_1kps0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.599962, -0.235975, 3.66073)
+horizontal = true
+
+[node name="Spawner3" parent="Player" instance=ExtResource("11_1kps0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.50285, -0.235975, 0.20791)
+
+[node name="Spawner4" parent="Player" instance=ExtResource("11_1kps0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.32085, -0.235975, 0.20791)
+
+[node name="AudioListener3D" type="AudioListener3D" parent="Player"]
+current = true
+
+[node name="CamManager" type="Node3D" parent="." node_paths=PackedStringArray("target")]
+process_mode = 3
+script = ExtResource("12_1ilxg")
+target = NodePath("../Player")
+smooth_speed = 5.0
+
+[node name="CamShaker" type="Node3D" parent="CamManager"]
+script = ExtResource("13_u3ma8")
+period = 0.2
+magnitude = 0.01
+
+[node name="Camera3D" type="Camera3D" parent="CamManager/CamShaker"]
+process_mode = 3
+transform = Transform3D(1, 0, 0, 0, 0.79653, 0.604599, 0, -0.604599, 0.79653, 0, 2.6, 3.5)
+current = true
+fov = 50.0
+script = ExtResource("14_genx0")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CamManager/CamShaker/Camera3D"]
+extra_cull_margin = 624.15
+mesh = SubResource("QuadMesh_7tgkd")
+
+[node name="Projectiles" type="Node3D" parent="."]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-4.336e-08, -0.922336, 0.386389, -5.53147e-09, 0.386389, 0.922336, -1, 3.78552e-08, -2.18557e-08, 59.1026, 50.6433, -59.8691)
+shadow_enabled = true
+directional_shadow_max_distance = 10.0
+
+[node name="Enemies" type="Node3D" parent="."]
+
+[node name="Minions" type="Node3D" parent="."]
+
+[node name="Points" type="Node3D" parent="."]
+
+[node name="Dream1" parent="Points" instance=ExtResource("16_56ghv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.76105, 0.912137, 1.06216)
+dream = 5
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Points/Dream1"]
+stream = ExtResource("20_5nbk0")
+volume_db = 12.0
+unit_size = 0.2
+autoplay = true
+
+[node name="Dream2" parent="Points" instance=ExtResource("18_pj418")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.14498, 0.756034, 7.88017)
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Points/Dream2"]
+volume_db = 6.0
+unit_size = 0.1
+autoplay = true
+
+[node name="Dream3" parent="Points" instance=ExtResource("20_f4b53")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.0244, 0.756034, -2.97838)
+dream = 6
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Points/Dream3"]
+stream = ExtResource("23_nh231")
+volume_db = 12.0
+unit_size = 0.2
+autoplay = true
+
+[node name="Dream4" parent="Points" instance=ExtResource("22_2nh0g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.25029, 0.756034, -10.2451)
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Points/Dream4"]
+volume_db = 18.0
+unit_size = 0.1
+autoplay = true
+
+[node name="lodka" parent="." instance=ExtResource("24_pngwl")]
+transform = Transform3D(0.897958, 0, 0.44008, 0, 1, 0, -0.44008, 0, 0.897958, -11.2924, 0.539442, -14.7545)
+
+[node name="PowerUps" parent="." instance=ExtResource("25_dhf0g")]
+
+[node name="Button" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("26_tffto")
+
+[node name="CamTimer" type="Timer" parent="."]
+process_mode = 3
+wait_time = 1.5
+one_shot = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+process_mode = 3
+root_node = NodePath("../CanvasLayer")
+libraries = {
+"": SubResource("AnimationLibrary_67h72")
+}
+
+[connection signal="pressed" from="CanvasLayer/Control/Forgor/Label3/RestartButton" to="CanvasLayer/Control/Forgor" method="_on_restart_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/Forgor/Label4/MenuButton" to="CanvasLayer/Control/Forgor" method="_on_menu_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/BlurTut/Tutorial/CloseTutButton" to="CanvasLayer/Control/BlurTut/Tutorial" method="_on_close_tut_button_pressed"]
+
+[editable path="lvl3"]

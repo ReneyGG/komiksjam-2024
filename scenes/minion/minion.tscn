@@ -1,18 +1,13 @@
-[gd_scene load_steps=9 format=3 uid="uid://ddfymhuda26n"]
+[gd_scene load_steps=11 format=3 uid="uid://ddfymhuda26n"]
 
 [ext_resource type="Script" path="res://scenes/minion/minion.gd" id="1_ym8kd"]
-[ext_resource type="PackedScene" uid="uid://cacwxmrxabpv8" path="res://scenes/enemy/test_animprzeciwnika_6.tscn" id="2_a0rgr"]
+[ext_resource type="PackedScene" uid="uid://dofqpgs3na2mc" path="res://assets/minionek_poprawiony_2.glb" id="2_pxhcj"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_wowxq"]
 height = 1.80295
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_kf1cp"]
 radius = 0.781809
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_typks"]
-cull_mode = 2
-shading_mode = 0
-albedo_color = Color(1, 0.121569, 0.113725, 1)
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_rylc6"]
 lifetime_randomness = 0.5
@@ -23,18 +18,31 @@ initial_velocity_max = 12.0
 scale_min = 0.1
 scale_max = 0.3
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cecky"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_br1qq"]
 cull_mode = 2
 shading_mode = 0
 albedo_color = Color(1, 0.121569, 0.113725, 1)
 
 [sub_resource type="SphereMesh" id="SphereMesh_kf6m3"]
-material = SubResource("StandardMaterial3D_cecky")
+material = SubResource("StandardMaterial3D_br1qq")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qeynw"]
+cull_mode = 2
+shading_mode = 0
+albedo_color = Color(1, 0.121569, 0.113725, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hvux0"]
+cull_mode = 2
+shading_mode = 0
+albedo_color = Color(1, 0.121569, 0.113725, 1)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_6wd7u"]
+radius = 7.45521
 
 [node name="Minion" type="CharacterBody3D" groups=["minion"]]
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
-collision_layer = 2
-collision_mask = 2
+collision_layer = 10
+collision_mask = 10
 input_ray_pickable = false
 script = ExtResource("1_ym8kd")
 
@@ -48,23 +56,6 @@ collision_mask = 6
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 shape = SubResource("SphereShape3D_kf1cp")
 
-[node name="test_animprzeciwnika6" parent="." instance=ExtResource("2_a0rgr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.83627)
-
-[node name="Skeleton3D" parent="test_animprzeciwnika6/Armature_001" index="0"]
-bones/0/position = Vector3(0.0630974, -0.32268, 0.0934628)
-bones/1/rotation = Quaternion(-0.00371946, 0.882988, 0.469376, 0.002223)
-bones/3/rotation = Quaternion(-0.499222, -0.0271478, -0.0490505, 0.864658)
-bones/5/rotation = Quaternion(-0.0282528, 0.396315, 0.915755, 0.0594069)
-bones/7/rotation = Quaternion(0.920774, 0.0008395, 0.000351973, -0.390095)
-bones/9/rotation = Quaternion(0.480653, 0.809033, 0.141085, -0.307463)
-bones/11/rotation = Quaternion(-0.136439, 0.259144, 0.48351, 0.824892)
-bones/13/rotation = Quaternion(0.235401, 0.0165576, 0.865094, -0.442635)
-bones/15/rotation = Quaternion(0.908918, -0.378421, -0.149668, -0.0909162)
-
-[node name="Sphere" parent="test_animprzeciwnika6/Armature_001/Skeleton3D" index="0"]
-surface_material_override/0 = SubResource("StandardMaterial3D_typks")
-
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
 
@@ -77,7 +68,58 @@ explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_rylc6")
 draw_pass_1 = SubResource("SphereMesh_kf6m3")
 
+[node name="minionek_poprawiony_2" parent="." instance=ExtResource("2_pxhcj")]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, -1.85607, 1.60235)
+
+[node name="Skeleton3D" parent="minionek_poprawiony_2/Armature_001" index="0"]
+bones/0/position = Vector3(-1.97721e-16, -0.585236, -0.282197)
+bones/0/rotation = Quaternion(0.862919, 1.32485e-16, 3.46228e-17, 0.505343)
+bones/0/scale = Vector3(1, 1, 1)
+bones/1/rotation = Quaternion(-0.842511, -7.86057e-15, -4.05633e-15, 0.538679)
+bones/2/rotation = Quaternion(-0.16059, 0.00488603, 0.0352346, 0.98638)
+bones/3/rotation = Quaternion(-0.0758244, 0.00505146, 0.0445798, 0.996111)
+bones/5/rotation = Quaternion(0.842506, -6.42165e-08, -1.00435e-07, 0.538687)
+bones/5/scale = Vector3(1, 1, 1)
+bones/6/rotation = Quaternion(0.160587, -0.00488592, 0.0352337, 0.986381)
+bones/7/rotation = Quaternion(0.0758255, -0.00505145, 0.0445801, 0.996111)
+bones/8/rotation = Quaternion(0.0550781, -1.80686e-15, -1.31316e-08, 0.998482)
+bones/10/rotation = Quaternion(0.962603, -1.88082e-16, 1.86093e-16, 0.270917)
+bones/10/scale = Vector3(1, 1, 1)
+bones/11/rotation = Quaternion(0.955692, -3.50916e-08, 1.13927e-07, -0.29437)
+bones/11/scale = Vector3(1, 1, 1)
+bones/12/rotation = Quaternion(7.80734e-07, 0.953073, -0.30274, -2.45787e-06)
+bones/13/rotation = Quaternion(6.17434e-08, 0.948389, 0.317109, 1.84658e-07)
+bones/13/scale = Vector3(1, 1, 1)
+bones/14/rotation = Quaternion(0.980471, -1.23915e-16, 1.38064e-16, -0.196662)
+bones/14/scale = Vector3(1, 1, 1)
+bones/15/rotation = Quaternion(0.981064, 2.3089e-08, 1.16952e-07, 0.193685)
+bones/15/scale = Vector3(1, 1, 0.999999)
+bones/16/rotation = Quaternion(5.02057e-08, -2.51215e-15, -0.707107, 0.707107)
+bones/16/scale = Vector3(0.784228, 0.784228, 0.458883)
+
+[node name="NurbsCircle_001" parent="minionek_poprawiony_2/Armature_001/Skeleton3D" index="0"]
+transform = Transform3D(-1.51869e-16, 0.784228, -3.25814e-08, 0.383689, -4.8562e-08, -0.40021, -0.683956, -2.72425e-08, -0.224512, 1.29718e-17, -0.746497, -0.0304861)
+
+[node name="NurbsCircle_001" parent="minionek_poprawiony_2/Armature_001/Skeleton3D/NurbsCircle_001" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_qeynw")
+
+[node name="NurbsCircle" parent="minionek_poprawiony_2/Armature_001/Skeleton3D" index="1"]
+surface_material_override/0 = SubResource("StandardMaterial3D_hvux0")
+
+[node name="Range" type="Area3D" parent="."]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Range"]
+shape = SubResource("SphereShape3D_6wd7u")
+
+[node name="AttackTimer" type="Timer" parent="."]
+one_shot = true
+
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]
+[connection signal="body_entered" from="Range" to="." method="_on_range_body_entered"]
+[connection signal="body_exited" from="Range" to="." method="_on_range_body_exited"]
+[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
 
-[editable path="test_animprzeciwnika6"]
+[editable path="minionek_poprawiony_2"]
